@@ -1,0 +1,791 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>DuckDNS DDNS 설치 - 반야자비의 웹로그 저장소</title>
+<meta name="description" content="  언제까지 IP를 입력해서 서비스를 사용할 수는 없습니다.">
+
+
+  <meta name="author" content="반야자비">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="반야자비의 웹로그 저장소">
+<meta property="og:title" content="DuckDNS DDNS 설치">
+<meta property="og:url" content="http://0.0.0.0:4000/2019-11-10/DuckDNS-DDNS-%EC%84%A4%EC%B9%98">
+
+
+  <meta property="og:description" content="  언제까지 IP를 입력해서 서비스를 사용할 수는 없습니다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-11-10T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/2019-11-10/DuckDNS-DDNS-%EC%84%A4%EC%B9%98">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Banyazavi",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="b7a6aab44db08c8b2a0f6481b3d71ae43203d2c5">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="반야자비의 웹로그 저장소 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          반야자비의 웹로그 저장소
+          <span class="site-subtitle">알게 된 것, 알아가고 있는 것 그리고 알리고 싶은 것을 기록합니다.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.jpg" alt="반야자비" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">반야자비</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I come not, friends, to steal away your hearts…<br />
+- Julius Caesar, Act III, scene ii<br />
+<br />
+친구여, 나는 너의 하트를 빼앗으려 온 것이 아니다…<br />
+- 줄리어스 시저, 3막, 2장</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:banyazavi.choi@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://www.banyazavi.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/2019-10-06/OMV4-%EC%9E%90%EC%9E%91-NAS-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0"><span class="nav__sub-title">OMV4 NAS</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-09/%EB%94%94%EC%8A%A4%ED%81%AC-%EB%A7%88%EC%9A%B4%ED%8A%B8-%EB%B0%8F-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EC%84%A4%EC%A0%95" class="">- 디스크 마운트 및 공유 폴더 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-13/%EA%B7%B8%EB%A3%B9-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%B6%94%EA%B0%80,-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC" class="">- 그룹 및 사용자 추가, 공유 폴더 권한 부여</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-26/SMB-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%84%A4%EC%A0%95" class="">- SMB 네트워크 드라이브 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-27/FTP-%EC%84%A4%EC%A0%95" class="">- FTP 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-10/DuckDNS-DDNS-%EC%84%A4%EC%B9%98" class="">- DuckDNS DDNS 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-24/Transmission-BitTorrent-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%A4%EC%B9%98" class="">- Transmission BitTorrent 클라이언트 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-01/Nginx-%EC%97%AD%EB%B0%A9%ED%96%A5-%ED%94%84%EB%A1%9D%EC%8B%9C-%EC%84%A4%EC%A0%95" class="">- Nginx 역방향 프록시 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9" class="">- Let’s Encrypt SSL/TLS 인증서 적용</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" class="">- Docker 서비스 설치</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="DuckDNS DDNS 설치">
+    <meta itemprop="description" content="  언제까지 IP를 입력해서 서비스를 사용할 수는 없습니다.">
+    <meta itemprop="datePublished" content="November 10, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">DuckDNS DDNS 설치
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <blockquote>
+  <p>언제까지 IP를 입력해서 서비스를 사용할 수는 없습니다.</p>
+</blockquote>
+
+<!--more-->
+
+<p><strong>DDNS</strong><sup>Dynamic DNS</sup>란 유동 IP에 대해 <strong>DNS</strong><sup>Domain Name System</sup>를 제공하는 방법입니다. DDNS 서버에 주기적으로 IP 갱신 요청을 보내, 설령 해당 도메인의 IP가 변경되었더라도 빠르게 이를 반영하는 방식으로 동작합니다.</p>
+
+<hr />
+
+<h1 id="사실-이건-omv에서-제공하지-않는다">사실 이건 OMV에서 제공하지 않는다</h1>
+
+<p>사실 이 글을 주제에 넣는게 맞는지 고민을 했습니다. 왜냐하면 이건 OMV에서 지원하는 서비스가 아니거든요. 하지만 외부 접속이 필요한 시점에서 도메인은 꼭 필요한 것이 되므로, 나스의 설치를 위해서라면 꼭 필요한 과정이라고 생각해서 넣었습니다.</p>
+
+<p>그리고 굳이 이 글의 방법으로 DDNS를 설치할 필요도 없는데요.</p>
+
+<h1 id="공유기에서-ddns-서비스를-지원한다">공유기에서 DDNS 서비스를 지원한다</h1>
+
+<p>사실 DDNS는 홈 네트워크를 외부에서 쉽게 접속하기 위한 방법이고, 이 방법을 위해서는 24시간 동작하는 컴퓨팅 장비가 필요하기 때문에, 이 조건을 충족하는 장비인 공유기에서도 DDNS를 지원합니다.</p>
+
+<p>ipTIME의 경우 <strong>iptime.org</strong>와 <strong>ipdisk.co.kr</strong>를 제공하고 있고, ASUS의 경우 <strong>asuscomm.com</strong> 이름으로 제공하며, 그 외 다른 유명 DDNS 연결도 지원하고 있어요.</p>
+
+<p>하지만 우리 역시 24시간 돌아가는 나스가 있으니! <del>공유기별 방법 다 안내하기도 귀찮고</del> 나스를 통하여 설치하는 방법을 소개하겠습니다.</p>
+
+<h1 id="duck-dns">Duck DNS</h1>
+
+<p><img src="/assets/images/2019-11-10/2019-11-10-01-01.png" alt="Duck DNS 소개" /></p>
+
+<p><a href="https://www.duckdns.org/" target="_blank"><strong>Duck DNS</strong></a>는 무료 DDNS 서비스 중 하나입니다.</p>
+
+<p>다른 DDNS 서비스도 있지만, Duck DNS도 꽤 안정적인 서비스이고 서브도메인에 대한 연결도 지원하고 있으므로 나스용으로는 꽤 괜찮은 것 같아요. 그리고 DDNS 갱신도 쉬운 편이에요.</p>
+
+<p>우선, 가입 후 도메인 등록부터 해 봅시다.</p>
+
+<h1 id="duck-dns에-도메인-등록">Duck DNS에 도메인 등록</h1>
+
+<p><img src="/assets/images/2019-11-10/2019-11-10-01-02.png" alt="Duck DNS 등록 화면" /></p>
+
+<p>소셜로그인으로 로그인하고 나면 위와 같은 화면이 뜹니다. <strong>토큰은 개인정보로 DDNS 갱신에 필요하니 외부에 노출시키는 일이 없도록 주의합니다.</strong> <del>누가 대신 갱신해 버릴수도</del></p>
+
+<p>그리고 하고 싶은 도메인을 적은 뒤 <strong>add domain</strong> 버튼을 누르면, 중복 검사가 완료된 후에,</p>
+
+<p><img src="/assets/images/2019-11-10/2019-11-10-01-03.png" alt="Duck DNS 등록 완료" /></p>
+
+<p>이렇게 도메인이 등록됩니다!</p>
+
+<p>이 작업을 하는 컴퓨터와 나스가 같은 공유기 아래 있다면, <strong>update ip</strong> 버튼을 눌러 DDNS와 IP를 연동시킬 수 있어요. 그러므로 앞으로 5분마다 이 사이트에 접속하여 저 버튼을 눌러주면 됩니다 :) <del>다음 글은 5분마다 갱신 버튼을 누를 불침번을 정하는 방법입니다.</del></p>
+
+<p>5분 마다 이걸 눌러줄 수는 없으니, 나스가 자동으로 갱신하게 해야겠죠.</p>
+
+<h1 id="nas에-자동-갱신-설정하기">NAS에 자동 갱신 설정하기</h1>
+
+<p><img src="/assets/images/2019-11-10/2019-11-10-01-04.png" alt="Duck DNS Install" /></p>
+
+<p>사실 Duck DNS에서 시스템별 자동 갱신 방법을 제공하고 있어요. <a href="https://www.duckdns.org/install.jsp" target="_blank"><strong>Duck DNS Install</strong></a></p>
+
+<p>이 방법 그대로 따라해봅시다. 우선 <code class="highlighter-rouge">ssh</code>에 접속해서,</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo mkdir -p /root/duckdns
+$ sudo vi /root/duckdns/duck.sh
+</code></pre></div></div>
+
+<p>root의 홈 디렉토리 아래에 <strong>duckdns</strong> 폴더를 만들고, 그 아래 <strong>duck.sh</strong> 파일을 만들어 편집합니다. 그리고 파일에 다음과 같이 내용을 넣으세요.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>echo url="https://www.duckdns.org/update?domains={사용 도메인}&amp;token={할당받은 토큰}&amp;ip=" | curl -k -o ~/duckdns/duck.log -K -
+</code></pre></div></div>
+
+<p>그리고 root 유저가 실행할 수 있도록 권한을 조정합니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo chmod 700 /root/duckdns/duck.sh
+</code></pre></div></div>
+
+<p>그리고 <strong>시스템 &gt; 예약된 작업</strong>에서 이 스크립트를 추가합니다.</p>
+
+<p><img src="/assets/images/2019-11-10/2019-11-10-01-05.png" alt="Duck DNS 갱신 스크립트 예약" /></p>
+
+<p>스크립트가 한번 실행되고 나면 등록된 DDNS 주소로 나스에 접속할 수 있습니다.</p>
+
+<p>혹시 공유기의 설정 페이지가 뜬다면 공유기의 포트포워딩 설정을 수정하고, 아예 연결이 되지 않는다면 Duck DNS 사이트에 접속하여 공인 IP가 정확하게 등록되었는지 확인해 봅시다.</p>
+
+<hr />
+
+<h1 id="그리고-사실-남은-이야기">그리고 사실 남은 이야기</h1>
+
+<p>원래 갱신 스크립트를 생성하고 이를 예약 실행하는 복잡한 방법만 알고 있었는데, 이번에 글을 쓰기 위해 알아보다가 그만…</p>
+
+<p><strong>freenas용 인스톨 방법을 활용한 간단 설정법을 알게 되었어요.</strong></p>
+
+<p>방법은 매우 간단하합니다. 다음의 스크립트를 예약된 작업의 명령에 추가시켜주면 된다. 프리나스와는 <code class="highlighter-rouge">curl</code> 명령의 위치가 다르므로 <code class="highlighter-rouge">/usr/local/bin/curl</code>만 <code class="highlighter-rouge">/usr/bin/curl</code>로 바꾸어 줍니다. 혹시 <code class="highlighter-rouge">curl</code>이 설치되지 않은 경우에는 <code class="highlighter-rouge">$ sudo apt-get install curl</code> 명령을 통해 <code class="highlighter-rouge">curl</code>을 설치해 주세요.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/usr/bin/curl http://www.duckdns.org/update/{사용 도메인}/{할당받은 토큰}
+</code></pre></div></div>
+
+<p>그리고 아래와 같이 설정해 주면…</p>
+
+<p><img src="/assets/images/2019-11-10/2019-11-10-01-06.png" alt="간단한 Duck DNS 갱신 스크립트 예약" /></p>
+
+<p>되네요. <del>앞에 쓴 글 다 날아가는 소리</del></p>
+
+<p>저도 지금은 이 방법으로 쓰고 있습니다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#ddns" class="page__taxonomy-item" rel="tag">DDNS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#nas" class="page__taxonomy-item" rel="tag">NAS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#openmediavault" class="page__taxonomy-item" rel="tag">openmediavault</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#omv4-%EC%9E%90%EC%9E%91-nas-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0" class="page__taxonomy-item" rel="tag">OMV4 자작 NAS 구축하기</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-11-10T00:00:00+09:00">November 10, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=DuckDNS+DDNS+%EC%84%A4%EC%B9%98%20http%3A%2F%2F0.0.0.0%3A4000%2F2019-11-10%2FDuckDNS-DDNS-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2F2019-11-10%2FDuckDNS-DDNS-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2F2019-11-10%2FDuckDNS-DDNS-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2019-10-27/FTP-%EC%84%A4%EC%A0%95" class="pagination--pager" title="FTP 설정
+">이전</a>
+    
+    
+      <a href="/2019-11-24/Transmission-BitTorrent-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%A4%EC%B9%98" class="pagination--pager" title="Transmission BitTorrent 클라이언트 설치
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-03-01/Nginx-Proxy-Manager-%EC%84%A4%EC%B9%98" rel="permalink">Nginx Proxy Manager 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  대부분의 서비스를 웹 페이지를 통해 접속할 거에요. 그러면 HTTPS 설정 서비스부터 설치하는 것이 좋겠죠?
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-23/Docker%EC%99%80-Portainer-%EC%84%A4%EC%B9%98" rel="permalink">Docker와 Portainer 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  이 시리즈를 위한 가장 기본적인 도구 두 개를 먼저 설치해야 합니다.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-20/Docker-Cookbook" rel="permalink">Docker Cookbook
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  컴퓨터 업계에서 “Cookbook”이란 어떤 것을 쉽게 설정하거나 구현할 수 있게 하는 코드 묶음을 의미합니다. 우리는 이 쿡북을 통해서 도커 서비스를 쉽게 설치해 보려고 해요.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" rel="permalink">Docker 서비스 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  도커를 사용하게 되면 OMV 플러그인에 한정되지 않는 수많은 서비스를 설치할 수 있습니다. 그리고 요즘은 도커로 배포되는 서비스도 많아졌어요.
+
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Banyazavi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://0.0.0.0:4000/2019-11-10/DuckDNS-DDNS-%EC%84%A4%EC%B9%98";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2019-11-10/DuckDNS DDNS 설치"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://banyazavis-weblog-repository.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

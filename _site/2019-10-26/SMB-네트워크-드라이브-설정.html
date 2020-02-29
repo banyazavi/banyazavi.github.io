@@ -1,0 +1,764 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>SMB 네트워크 드라이브 설정 - 반야자비의 웹로그 저장소</title>
+<meta name="description" content="  윈도우 홈 네트워크 아래서라면 SMB보다 편한 것은 없는 것 같습니다. 네트워크 드라이브가 지원되거든요.">
+
+
+  <meta name="author" content="반야자비">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="반야자비의 웹로그 저장소">
+<meta property="og:title" content="SMB 네트워크 드라이브 설정">
+<meta property="og:url" content="http://0.0.0.0:4000/2019-10-26/SMB-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%84%A4%EC%A0%95">
+
+
+  <meta property="og:description" content="  윈도우 홈 네트워크 아래서라면 SMB보다 편한 것은 없는 것 같습니다. 네트워크 드라이브가 지원되거든요.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-10-26T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/2019-10-26/SMB-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%84%A4%EC%A0%95">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Banyazavi",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="b7a6aab44db08c8b2a0f6481b3d71ae43203d2c5">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="반야자비의 웹로그 저장소 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          반야자비의 웹로그 저장소
+          <span class="site-subtitle">알게 된 것, 알아가고 있는 것 그리고 알리고 싶은 것을 기록합니다.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.jpg" alt="반야자비" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">반야자비</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I come not, friends, to steal away your hearts…<br />
+- Julius Caesar, Act III, scene ii<br />
+<br />
+친구여, 나는 너의 하트를 빼앗으려 온 것이 아니다…<br />
+- 줄리어스 시저, 3막, 2장</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:banyazavi.choi@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://www.banyazavi.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/2019-10-06/OMV4-%EC%9E%90%EC%9E%91-NAS-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0"><span class="nav__sub-title">OMV4 NAS</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-09/%EB%94%94%EC%8A%A4%ED%81%AC-%EB%A7%88%EC%9A%B4%ED%8A%B8-%EB%B0%8F-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EC%84%A4%EC%A0%95" class="">- 디스크 마운트 및 공유 폴더 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-13/%EA%B7%B8%EB%A3%B9-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%B6%94%EA%B0%80,-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC" class="">- 그룹 및 사용자 추가, 공유 폴더 권한 부여</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-26/SMB-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%84%A4%EC%A0%95" class="">- SMB 네트워크 드라이브 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-27/FTP-%EC%84%A4%EC%A0%95" class="">- FTP 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-10/DuckDNS-DDNS-%EC%84%A4%EC%B9%98" class="">- DuckDNS DDNS 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-24/Transmission-BitTorrent-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%A4%EC%B9%98" class="">- Transmission BitTorrent 클라이언트 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-01/Nginx-%EC%97%AD%EB%B0%A9%ED%96%A5-%ED%94%84%EB%A1%9D%EC%8B%9C-%EC%84%A4%EC%A0%95" class="">- Nginx 역방향 프록시 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9" class="">- Let’s Encrypt SSL/TLS 인증서 적용</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" class="">- Docker 서비스 설치</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="SMB 네트워크 드라이브 설정">
+    <meta itemprop="description" content="  윈도우 홈 네트워크 아래서라면 SMB보다 편한 것은 없는 것 같습니다. 네트워크 드라이브가 지원되거든요.">
+    <meta itemprop="datePublished" content="October 26, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">SMB 네트워크 드라이브 설정
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <blockquote>
+  <p>윈도우 홈 네트워크 아래서라면 SMB보다 편한 것은 없는 것 같습니다. 네트워크 드라이브가 지원되거든요.</p>
+</blockquote>
+
+<!--more-->
+
+<p><strong>SMB</strong><sup>Server Message Block</sup>은 윈도우에서 파일이나 장치를 공유하기 위한 프로토콜입니다. 윈도우 탐색기의 네트워크에 들어가면 보이는 홈 네트워크상의 장치에 사용되는 프로토콜이라고 생각하면 될 거에요. SMB 프로토콜을 구현한 오픈 소스 소프트웨어 이름이 <strong>Samba</strong>인데요. 그래서인지 SMB 프로토콜 자체를 <strong>삼바</strong>라고 부르기도 하는 것 같네요.</p>
+
+<p>아무튼 우리는 OMV의 SMB 설정을 환성화 한 후, 같은 홈 네트워크에 속한 윈도우의 <strong>네트워크 드라이브 연결</strong> 기능으로 연결시킬 겁니다.</p>
+
+<hr />
+
+<h1 id="호스트-이름-설정하기">호스트 이름 설정하기</h1>
+
+<p><strong>시스템 &gt; 네트워크</strong> 페이지에서 호스트 이름을 설정합니다. 이건 사실 SMB하고는 직접적으로 상관은 없지만, 네트워크 드라이브를 편하게 연결하기 위해 필요해요.</p>
+
+<p>그리고 기본적으로 여기서 설정한 이름이 네트워크 상에서 이 나스의 이름으로 쓰이므로, 알아보기 쉽게 지정하는 것이 좋겠죠.</p>
+
+<p><img src="/assets/images/2019-10-26/2019-10-26-01-01.png" alt="호스트 이름 설정" /></p>
+
+<p>간단하게 <strong>OMV4</strong>라고 이름을 지었습니다. <strong>도메인 이름</strong>도 설정이 가능하긴 한데, 홈 서버 수준에서는 이것까지 설정하여 구분해야 할 이유는 별로 없습니다. <strong>알림</strong> 서비스를 사용하여 OMV가 메일을 보낼 것이 아니라면 도메인 이름 설정은 생략해도 괜찮습니다.</p>
+
+<h1 id="smb-활성화">SMB 활성화</h1>
+
+<p>그리고 <strong>서비스 &gt; SMB/CIFS</strong> 페이지에서 서비스 활성화를 합니다.</p>
+
+<p><img src="/assets/images/2019-10-26/2019-10-26-01-02.png" alt="SMB/CIFS 서비스 활성화" /></p>
+
+<p>사실 이 아래에 몇 가지 설정이 더 있는데, 기본적인 사용에는 기본값에서 굳이 변경할 필요가 없으므로 스크린샷에 포함하지는 않았어요. 굳이 사용해 볼 만한 옵션이라면…</p>
+
+<ul>
+  <li><strong>홈 경로 활성화</strong>: <strong>사용자 홈 디렉터리</strong>를 활성화 시켰다면 이 옵션을 사용하여 사용자별 홈 폴더를 제공해 줄 수 있습니다. 소규모 사업장과 같은 곳에서 나스를 통한 개인별 백업 공간을 제공하려는 경우 유용할 수 있겠네요. 또는 가정에 여러 대의 PC를 여러 구성원이 사용할 때 개인 폴더로 활용하거나…</li>
+</ul>
+
+<h1 id="공유-폴더-추가">공유 폴더 추가</h1>
+
+<p>이제 <strong>공유</strong> 탭에 들어가서 아래와 같이 공유 폴더를 추가합니다. 이후에도 OMV에서 설정하는 대부분의 서비스에서 이와 같이 공유 폴더 추가하는 과정이 필요해요.</p>
+
+<p><img src="/assets/images/2019-10-26/2019-10-26-01-03.png" alt="Content 공유 추가" /></p>
+
+<p>만들어 둔 공유 폴더를 선택할 수 있습니다. 저는 그림과 같이 <strong>Contents</strong> 폴더를 공유하고, 추가적으로 <strong>Public</strong> 폴더도 공유하도록 할게요.</p>
+
+<p><strong>home</strong> 폴더는 이렇게 공유하면 안 됩니다! 앞에서 홈 경로 활성화를 해주었으면 여기서 추가하지 않아도 자연스럽게 사용자별로 제공이 된거든요. 오히려 공유하면, 경우에 따라 <strong>모든 사용자가 다른 사용자 홈 폴더에 접근하게 될 수도 있습니다!</strong></p>
+
+<p><img src="/assets/images/2019-10-26/2019-10-26-01-04.png" alt="공유 추가 완료" /></p>
+
+<p>사용할 공유 폴더를 모두 추가하고 나면 이렇게 목록을 확인할 수 있어요.</p>
+
+<h1 id="네트워크-드라이브-연결하기">네트워크 드라이브 연결하기</h1>
+
+<p><img src="/assets/images/2019-10-26/2019-10-26-01-05.png" alt="Windows 내 PC 컴퓨터 탭" /></p>
+
+<p>윈도우의 <strong>내 PC</strong>에 들어가면 상단 탭에 위와 같은 메뉴들이 있습니다. <strong>네트워크 드라이브 연결</strong>을 눌러 설정을 시작합니다.</p>
+
+<p><img src="/assets/images/2019-10-26/2019-10-26-01-06.png" alt="네트워크 드라이브 추가 화면" /></p>
+
+<p>적당한 드라이브 이름을 할당하고 폴더 경로를 입력합니다. 폴더 경로는 <code class="highlighter-rouge">\\호스트 이름\공유 폴더 이름</code> 과 같이 설정할 수 있어요. 또는 <code class="highlighter-rouge">\\나스 IP\공유 폴더 이름</code> 과 같이 설정해도 됩니다. <strong>로그인할 때 다시 연결</strong> 옵션을 선택하면 재부팅 후 자동으로 연결이 되고, 윈도우와 나스의 계정 정보가 다를 경우 (대부분 다를 겁니다.) <strong>다른 자격 증명을 사용하여 연결</strong>을 선택하여 계정 정보를 직접 입력하도록 합니다.</p>
+
+<p>저는 호스트 이름을 <strong>O</strong>MV4 라고 지었으므로 <strong>O</strong> 드라이브를 할당하고, Contents 폴더를 연결할 예정이므로 <code class="highlighter-rouge">\\OMV4\Contents</code> 라고 경로를 입력했어요.</p>
+
+<p><img src="/assets/images/2019-10-26/2019-10-26-01-07.png" alt="네트워크 자격 증명 입력 화면" /></p>
+
+<p>그럼 이렇게 자격 증명을 입력하는 화면이 나오는데, OMV의 사용자 정보를 입력하면 됩니다.</p>
+
+<p>정상적으로 입력이 완료되면 네트워크 드라이브가 연결된 후, 연결된 공유 폴더가 새 창으로 나오게 됩니다. 그럼 끝!</p>
+
+<blockquote>
+  <p><strong>[NOTE]</strong></p>
+
+  <p>가끔 사용자 정보를 정상적으로 입력해도 계정 정보가 일치하지 않는다는 메시지와 함께 연결이 되지 않는 경우가 있습니다. 여기에는 다양한 원인이 있을 수 있으나, 정상적으로 구성하였는데도 그런 상황이 발생한다면, OMV 웹 패널의 <strong>접근 권한 관리 &gt; 사용자</strong> 페이지에서 해당 사용자의 비밀번호를 다시 설정해 보세요. 그 후에 정상적으로 되는 경우가 종종 있었습니다.</p>
+
+  <p>아마도 리눅스 사용자 비밀번호가 SMB에 정상적으로 동기화되지 않는 문제인 것 같네요.</p>
+</blockquote>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#nas" class="page__taxonomy-item" rel="tag">NAS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#openmediavault" class="page__taxonomy-item" rel="tag">openmediavault</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#smb" class="page__taxonomy-item" rel="tag">SMB</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#omv4-%EC%9E%90%EC%9E%91-nas-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0" class="page__taxonomy-item" rel="tag">OMV4 자작 NAS 구축하기</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-10-26T00:00:00+09:00">October 26, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=SMB+%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC+%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C+%EC%84%A4%EC%A0%95%20http%3A%2F%2F0.0.0.0%3A4000%2F2019-10-26%2FSMB-%25EB%2584%25A4%25ED%258A%25B8%25EC%259B%258C%25ED%2581%25AC-%25EB%2593%259C%25EB%259D%25BC%25EC%259D%25B4%25EB%25B8%258C-%25EC%2584%25A4%25EC%25A0%2595" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2F2019-10-26%2FSMB-%25EB%2584%25A4%25ED%258A%25B8%25EC%259B%258C%25ED%2581%25AC-%25EB%2593%259C%25EB%259D%25BC%25EC%259D%25B4%25EB%25B8%258C-%25EC%2584%25A4%25EC%25A0%2595" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2F2019-10-26%2FSMB-%25EB%2584%25A4%25ED%258A%25B8%25EC%259B%258C%25ED%2581%25AC-%25EB%2593%259C%25EB%259D%25BC%25EC%259D%25B4%25EB%25B8%258C-%25EC%2584%25A4%25EC%25A0%2595" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2019-10-13/%EA%B7%B8%EB%A3%B9-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%B6%94%EA%B0%80,-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC" class="pagination--pager" title="그룹 및 사용자 추가, 공유 폴더 권한 부여
+">이전</a>
+    
+    
+      <a href="/2019-10-27/FTP-%EC%84%A4%EC%A0%95" class="pagination--pager" title="FTP 설정
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-03-01/Nginx-Proxy-Manager-%EC%84%A4%EC%B9%98" rel="permalink">Nginx Proxy Manager 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  대부분의 서비스를 웹 페이지를 통해 접속할 거에요. 그러면 HTTPS 설정 서비스부터 설치하는 것이 좋겠죠?
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-23/Docker%EC%99%80-Portainer-%EC%84%A4%EC%B9%98" rel="permalink">Docker와 Portainer 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  이 시리즈를 위한 가장 기본적인 도구 두 개를 먼저 설치해야 합니다.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-20/Docker-Cookbook" rel="permalink">Docker Cookbook
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  컴퓨터 업계에서 “Cookbook”이란 어떤 것을 쉽게 설정하거나 구현할 수 있게 하는 코드 묶음을 의미합니다. 우리는 이 쿡북을 통해서 도커 서비스를 쉽게 설치해 보려고 해요.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" rel="permalink">Docker 서비스 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  도커를 사용하게 되면 OMV 플러그인에 한정되지 않는 수많은 서비스를 설치할 수 있습니다. 그리고 요즘은 도커로 배포되는 서비스도 많아졌어요.
+
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Banyazavi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://0.0.0.0:4000/2019-10-26/SMB-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%84%A4%EC%A0%95";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2019-10-26/SMB 네트워크 드라이브 설정"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://banyazavis-weblog-repository.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

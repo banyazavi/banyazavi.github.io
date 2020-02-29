@@ -1,0 +1,794 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Let’s Encrypt SSL/TLS 인증서 적용 - 반야자비의 웹로그 저장소</title>
+<meta name="description" content="  웹 브라우저를 통해 나스에 접속했을 때, ‘주의 요함’ 이라는 메시지가 뜨면 조금 그렇겠죠?">
+
+
+  <meta name="author" content="반야자비">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="반야자비의 웹로그 저장소">
+<meta property="og:title" content="Let’s Encrypt SSL/TLS 인증서 적용">
+<meta property="og:url" content="http://0.0.0.0:4000/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9">
+
+
+  <meta property="og:description" content="  웹 브라우저를 통해 나스에 접속했을 때, ‘주의 요함’ 이라는 메시지가 뜨면 조금 그렇겠죠?">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-12-14T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Banyazavi",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="b7a6aab44db08c8b2a0f6481b3d71ae43203d2c5">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="반야자비의 웹로그 저장소 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          반야자비의 웹로그 저장소
+          <span class="site-subtitle">알게 된 것, 알아가고 있는 것 그리고 알리고 싶은 것을 기록합니다.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.jpg" alt="반야자비" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">반야자비</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I come not, friends, to steal away your hearts…<br />
+- Julius Caesar, Act III, scene ii<br />
+<br />
+친구여, 나는 너의 하트를 빼앗으려 온 것이 아니다…<br />
+- 줄리어스 시저, 3막, 2장</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:banyazavi.choi@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://www.banyazavi.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/2019-10-06/OMV4-%EC%9E%90%EC%9E%91-NAS-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0"><span class="nav__sub-title">OMV4 NAS</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-09/%EB%94%94%EC%8A%A4%ED%81%AC-%EB%A7%88%EC%9A%B4%ED%8A%B8-%EB%B0%8F-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EC%84%A4%EC%A0%95" class="">- 디스크 마운트 및 공유 폴더 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-13/%EA%B7%B8%EB%A3%B9-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%B6%94%EA%B0%80,-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC" class="">- 그룹 및 사용자 추가, 공유 폴더 권한 부여</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-26/SMB-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%84%A4%EC%A0%95" class="">- SMB 네트워크 드라이브 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-27/FTP-%EC%84%A4%EC%A0%95" class="">- FTP 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-10/DuckDNS-DDNS-%EC%84%A4%EC%B9%98" class="">- DuckDNS DDNS 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-24/Transmission-BitTorrent-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%A4%EC%B9%98" class="">- Transmission BitTorrent 클라이언트 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-01/Nginx-%EC%97%AD%EB%B0%A9%ED%96%A5-%ED%94%84%EB%A1%9D%EC%8B%9C-%EC%84%A4%EC%A0%95" class="">- Nginx 역방향 프록시 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9" class="">- Let’s Encrypt SSL/TLS 인증서 적용</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" class="">- Docker 서비스 설치</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Let’s Encrypt SSL/TLS 인증서 적용">
+    <meta itemprop="description" content="  웹 브라우저를 통해 나스에 접속했을 때, ‘주의 요함’ 이라는 메시지가 뜨면 조금 그렇겠죠?">
+    <meta itemprop="datePublished" content="December 14, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Let’s Encrypt SSL/TLS 인증서 적용
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <blockquote>
+  <p>웹 브라우저를 통해 나스에 접속했을 때, ‘주의 요함’ 이라는 메시지가 뜨면 조금 그렇겠죠?</p>
+</blockquote>
+
+<!--more-->
+
+<p><strong>SSL</strong><sup>Secure Socket Layer</sup>는 네트워크 보안 방식 중에 하나입니다. <strong>TLS</strong><sup>Transport Layer Security</sup>라는 이명으로도 많이 알려져 있는데, 네트워크의 전송(Transport)계층에 보안을 적용시켜 그 상위 계층 프로토콜인 HTTP, FTP의 보안 전송을 가능하게 하죠.</p>
+
+<p>아무래도 보안을 적용시키는 일이니만큼 약간의 속도 하락을 피할 수는 없으나, 요즘의 웹 브라우저는 보안 인증이 되어 있지 않은 페이지에는 경고를 발생시키는 등, 보안 장치가 되어 있지 않은 사이트의 이용을 엄격하게 제한하는 편이니 적용하는 편이 좋아요.</p>
+
+<hr />
+
+<h1 id="lets-encrypt">Let’s Encrypt</h1>
+
+<p><a href="https://letsencrypt.org/" target="_blank">Let’s Encrypt 공식 홈페이지</a></p>
+
+<p>TLS 인증서는 어떤 도메인에 대해 인증기관이 해당 도메인에 대한 인증키를 도메인 운영자에게 제공하고, 도메인에 이를 탑재하여 안전한 사이트임을 인증받게 되는 구조입니다. 즉, 브라우저가 인정하는 인증기관 - 인증기관이 인증하는 도메인과 인증서 - 인증서를 탑재한 도메인의 3박자가 맞아 돌아가며 사이트를 인증하는 방식이에요.</p>
+
+<p><strong>Let’s Encrypt</strong>는 TLS 인증서를 무료로 발급해주는 기관입니다. <strong>DV</strong><sup>Domain Validate</sup> 방식의 인증서를 발급하여 프로그램에 의한 자동화가 가능하기 때문에, 나스에서 이를 쉽게 발급받아 활용할 수 있습니다.</p>
+
+<h1 id="사전-작업">사전 작업</h1>
+
+<p>홈 네트워크 외부와 뭘 하려면 공유기에 포트포워딩 설정을 해 주어야 한다는 사실은 이제 익숙하죠?</p>
+
+<h2 id="공유기-포트포워딩-설정">공유기 포트포워딩 설정</h2>
+
+<p><img src="/assets/images/2019-12-14/2019-12-14-01-01.png" alt="HTTPS 포트포워딩 설정" /></p>
+
+<p><strong>HTTPS</strong> 서비스는 기본적으로 <strong>443</strong> 포트를 사용합니다. 이제 포트를 나스에 중계시키는 포트포워딩 규칙을 설정해 줍시다.</p>
+
+<h1 id="lets-encrypt-설치">Let’s Encrypt 설치</h1>
+
+<p><strong>시스템 &gt; 플러그인</strong> 메뉴로 들어가 Let’s Encrypt를 설치합니다.</p>
+
+<p><img src="/assets/images/2019-12-14/2019-12-14-01-02.png" alt="Let's Encrypt 설치" /></p>
+
+<p>이제 서비스 메뉴에 <strong>LetsEncrypt</strong> 메뉴가 보이네요. 기본 설정을 위해 설정 탭으로 들어갑니다.</p>
+
+<p><img src="/assets/images/2019-12-14/2019-12-14-01-03.png" alt="Let's Encrypt 기본 설정" /></p>
+
+<p>이후에 발급발을 인증서의 자동 갱신을 위해 <strong>Schedule Refresh</strong>를 활성화하고, 인증을 위한 메일 주소와 인증서 이름을 설정합니다.</p>
+
+<p><strong>RSA Key Length</strong>는 더 크게 설정할 수도 있는데, 그만큼 보안 인증에 CPU 자원이 더 소모되니 적당한 수준에서 설정합시다.</p>
+
+<h1 id="인증-도메인-추가-및-인증서-생성">인증 도메인 추가 및 인증서 생성</h1>
+
+<p><strong>Domain</strong> 탭에서 인증서를 발급받을 도메인을 추가합니다. 저는 저번에 추가한 2개의 서비스에 FTP까지 총 3개를 만들 예정이에요.</p>
+
+<ul>
+  <li>cpanel.banyazavi.duckdns.org (OMV 제어 패널)</li>
+  <li>ftp.banyazavi.duckdns.org (FTP)</li>
+  <li>torrent.banyazavi.duckdns.org (트랜스미션 RPC)</li>
+</ul>
+
+<p><img src="/assets/images/2019-12-14/2019-12-14-01-04.png" alt="Let's Encrypt 도메인 추가" /></p>
+
+<p>인증할 도메인들을 <code class="highlighter-rouge">,</code>로 이어 붙여줍니다. 한번에 100개 정도까지 가능하다고 합니다. <del>100개까지 쓸 일이…</del> 이때 도메인 인증을 위한 <strong>Web Root</strong>는 OMV의 루트 경로인 <code class="highlighter-rouge">/var/www/openmediavault/</code>로 지정해주면 됩니다.</p>
+
+<p>그러면 목록에 인증할 도메인이 목록에 뜨게 되는데, 다음과 같이 <strong>인증서 &gt; Generate</strong> 버튼을 눌러 인증서를 발급받아 봅시다.</p>
+
+<p><img src="/assets/images/2019-12-14/2019-12-14-01-05.png" alt="Let's Encrypt 인증서 생성" /></p>
+
+<p>인증서가 무사히 생성되었으면 아래와 같은 메시지가 나오며 완료됩니다.</p>
+
+<p><img src="/assets/images/2019-12-14/2019-12-14-01-06.png" alt="Let's Encrypt 인증서 완료" /></p>
+
+<h1 id="자-이제-서비스에-적용시켜-보자">자 이제 서비스에 적용시켜 보자!</h1>
+
+<h2 id="ftp에-ssltls-적용">FTP에 SSL/TLS 적용</h2>
+
+<p>FTP부터 연결시켜 봅시다. <strong>서비스 &gt; FTP &gt; SSL/TLS</strong> 탭에 들어가서 아래와 같이 설정합니다.</p>
+
+<p><img src="/assets/images/2019-12-14/2019-12-14-01-07.png" alt="FTP SSL/TLS 적용" /></p>
+
+<p>고급 설정의 네 가지 항목들은 사용하는 FTP 서비스가 정상적으로 동작하지 않을 때 바꿔 보며 테스트해 보세요. <strong>Required</strong>를 끄게 되면 평문 FTP로도 통신할 수 있으므로 실제로는 FTP가 적용되지 않은 것일 수도 있다는 점 주의하세요. <strong>묵시적 SSL</strong>은 FTP 클라이언트에서 <strong>Implicit</strong>이라고 불리는 보안 모드인데, 간혹 이 모드로 연결이 필요한 경우가 있습니다.</p>
+
+<h2 id="웹-사이트에-ssltls-적용하기">웹 사이트에 SSL/TLS 적용하기</h2>
+
+<p><strong>시스템 &gt; 일반 설정</strong> 메뉴에 가면 OMV 관리 페이지도 FTP와 비슷하게 인증서를 추가할 수 있습니다. 그런데 우리는 이미 엔진엑스를 통한 역방향 프록시로 관리 페이지에 접속하고 있으므로, 이 곳에서 설정하는 것이 더 편해요.</p>
+
+<p><strong>서비스 &gt; Nginx (websites)</strong> 페이지에 들어가서, 이전에 추가해놨던 서버 설정의 SSL 부분을 아래와 같이 편집합니다.</p>
+
+<p><img src="/assets/images/2019-12-14/2019-12-14-01-08.png" alt="Nginx SSL/TLS 적용" /></p>
+
+<p><strong>Only use SSL</strong> 설정을 켜 주면 HTTPS로만 접속할 수 있습니다. 이 경우에 HTTP로 접속하게 되면 접속을 거부하게 돼요.</p>
+
+<hr />
+
+<h1 id="그리고-남은-이야기">그리고 남은 이야기</h1>
+
+<p>이제 OMV4를 이용한 기본적인 나스 구축은 완료되었습니다. 지금까지의 과정을 잘 따라왔다면 다른 서비스들도 플러그인 페이지에서 조회하여 설치하고, 각 서비스 페이지에서 세부 설정하는 방식으로 사용할 수 있어요.</p>
+
+<p>플러그인이 지원되지 않는 서비스들은 SSH로 직접 접속하여 리눅스에 서비스를 설치하는 방법을 따라하여 설치할 수 있는데요, 이는 서버의 하드웨어 특성을 심하게 타기 때문에 일관적인 가이드가 어렵습니다.</p>
+
+<p>그래서 요즘은 이런 문제를 피하기 위해 <strong>Docker</strong>를 이용하여 서비스를 배포하는 경우가 많아졌어요. 그래서 다음 글은 도커를 사용하는 방법에 관한 이야기입니다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#let-s-encrypt" class="page__taxonomy-item" rel="tag">Let's Encrypt</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#nas" class="page__taxonomy-item" rel="tag">NAS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#openmediavault" class="page__taxonomy-item" rel="tag">openmediavault</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#ssl" class="page__taxonomy-item" rel="tag">SSL</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#tls" class="page__taxonomy-item" rel="tag">TLS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#omv4-%EC%9E%90%EC%9E%91-nas-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0" class="page__taxonomy-item" rel="tag">OMV4 자작 NAS 구축하기</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-12-14T00:00:00+09:00">December 14, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Let%27s+Encrypt+SSL%2FTLS+%EC%9D%B8%EC%A6%9D%EC%84%9C+%EC%A0%81%EC%9A%A9%20http%3A%2F%2F0.0.0.0%3A4000%2F2019-12-14%2FLet%27s-Encrypt-SSL-TLS-%25EC%259D%25B8%25EC%25A6%259D%25EC%2584%259C-%25EC%25A0%2581%25EC%259A%25A9" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2F2019-12-14%2FLet%27s-Encrypt-SSL-TLS-%25EC%259D%25B8%25EC%25A6%259D%25EC%2584%259C-%25EC%25A0%2581%25EC%259A%25A9" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2F2019-12-14%2FLet%27s-Encrypt-SSL-TLS-%25EC%259D%25B8%25EC%25A6%259D%25EC%2584%259C-%25EC%25A0%2581%25EC%259A%25A9" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2019-12-01/Nginx-%EC%97%AD%EB%B0%A9%ED%96%A5-%ED%94%84%EB%A1%9D%EC%8B%9C-%EC%84%A4%EC%A0%95" class="pagination--pager" title="Nginx 역방향 프록시 설정
+">이전</a>
+    
+    
+      <a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" class="pagination--pager" title="Docker 서비스 설치
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-03-01/Nginx-Proxy-Manager-%EC%84%A4%EC%B9%98" rel="permalink">Nginx Proxy Manager 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  대부분의 서비스를 웹 페이지를 통해 접속할 거에요. 그러면 HTTPS 설정 서비스부터 설치하는 것이 좋겠죠?
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-23/Docker%EC%99%80-Portainer-%EC%84%A4%EC%B9%98" rel="permalink">Docker와 Portainer 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  이 시리즈를 위한 가장 기본적인 도구 두 개를 먼저 설치해야 합니다.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-20/Docker-Cookbook" rel="permalink">Docker Cookbook
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  컴퓨터 업계에서 “Cookbook”이란 어떤 것을 쉽게 설정하거나 구현할 수 있게 하는 코드 묶음을 의미합니다. 우리는 이 쿡북을 통해서 도커 서비스를 쉽게 설치해 보려고 해요.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" rel="permalink">Docker 서비스 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  도커를 사용하게 되면 OMV 플러그인에 한정되지 않는 수많은 서비스를 설치할 수 있습니다. 그리고 요즘은 도커로 배포되는 서비스도 많아졌어요.
+
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Banyazavi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://0.0.0.0:4000/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2019-12-14/Let's Encrypt SSL TLS 인증서 적용"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://banyazavis-weblog-repository.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

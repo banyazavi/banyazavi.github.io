@@ -1,0 +1,923 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Docker 서비스 설치 - 반야자비의 웹로그 저장소</title>
+<meta name="description" content="  도커를 사용하게 되면 OMV 플러그인에 한정되지 않는 수많은 서비스를 설치할 수 있습니다. 그리고 요즘은 도커로 배포되는 서비스도 많아졌어요.">
+
+
+  <meta name="author" content="반야자비">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="반야자비의 웹로그 저장소">
+<meta property="og:title" content="Docker 서비스 설치">
+<meta property="og:url" content="http://0.0.0.0:4000/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98">
+
+
+  <meta property="og:description" content="  도커를 사용하게 되면 OMV 플러그인에 한정되지 않는 수많은 서비스를 설치할 수 있습니다. 그리고 요즘은 도커로 배포되는 서비스도 많아졌어요.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-12-22T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Banyazavi",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="b7a6aab44db08c8b2a0f6481b3d71ae43203d2c5">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="반야자비의 웹로그 저장소 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          반야자비의 웹로그 저장소
+          <span class="site-subtitle">알게 된 것, 알아가고 있는 것 그리고 알리고 싶은 것을 기록합니다.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.jpg" alt="반야자비" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">반야자비</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I come not, friends, to steal away your hearts…<br />
+- Julius Caesar, Act III, scene ii<br />
+<br />
+친구여, 나는 너의 하트를 빼앗으려 온 것이 아니다…<br />
+- 줄리어스 시저, 3막, 2장</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:banyazavi.choi@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://www.banyazavi.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/2019-10-06/OMV4-%EC%9E%90%EC%9E%91-NAS-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0"><span class="nav__sub-title">OMV4 NAS</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-09/%EB%94%94%EC%8A%A4%ED%81%AC-%EB%A7%88%EC%9A%B4%ED%8A%B8-%EB%B0%8F-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EC%84%A4%EC%A0%95" class="">- 디스크 마운트 및 공유 폴더 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-13/%EA%B7%B8%EB%A3%B9-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%B6%94%EA%B0%80,-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC" class="">- 그룹 및 사용자 추가, 공유 폴더 권한 부여</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-26/SMB-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%84%A4%EC%A0%95" class="">- SMB 네트워크 드라이브 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-27/FTP-%EC%84%A4%EC%A0%95" class="">- FTP 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-10/DuckDNS-DDNS-%EC%84%A4%EC%B9%98" class="">- DuckDNS DDNS 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-24/Transmission-BitTorrent-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%A4%EC%B9%98" class="">- Transmission BitTorrent 클라이언트 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-01/Nginx-%EC%97%AD%EB%B0%A9%ED%96%A5-%ED%94%84%EB%A1%9D%EC%8B%9C-%EC%84%A4%EC%A0%95" class="">- Nginx 역방향 프록시 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9" class="">- Let’s Encrypt SSL/TLS 인증서 적용</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" class="">- Docker 서비스 설치</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Docker 서비스 설치">
+    <meta itemprop="description" content="  도커를 사용하게 되면 OMV 플러그인에 한정되지 않는 수많은 서비스를 설치할 수 있습니다. 그리고 요즘은 도커로 배포되는 서비스도 많아졌어요.">
+    <meta itemprop="datePublished" content="December 22, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Docker 서비스 설치
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <blockquote>
+  <p>도커를 사용하게 되면 OMV 플러그인에 한정되지 않는 수많은 서비스를 설치할 수 있습니다. 그리고 요즘은 도커로 배포되는 서비스도 많아졌어요.</p>
+</blockquote>
+
+<!--more-->
+
+<p><strong>Docker</strong>는 컨테이너 기반의 리눅스 가상화 도구입니다… 라고 업계 용어로 표현하면 선뜻 다가가기가 힘들죠. 우리는 그저 나스를 구축하고자 할 뿐이니까, 쉽게 다시 정의해봅시다.</p>
+
+<p><strong>Docker</strong>는 서버 환경에 관계 없이 동일한 방법으로 서비스를 설치할 수 있게 하는 플랫폼입니다.</p>
+
+<p>음, 아직도 어렵지만 우리의 목적에 맞는 표현은 된 것 같아요.</p>
+
+<hr />
+
+<h1 id="docker">Docker?</h1>
+
+<p><img src="/assets/images/2019-12-22/2019-12-22-01-01.png" alt="Docker 로고" /><br />
+<a href="https://www.docker.com/" target="_blank">Docker 공식 홈페이지</a></p>
+
+<p>앞의 정의를 다시 가져옵시다. <strong>Docker</strong>는 컨테이너 기반의 리눅스 가상화 도구입니다. <strong>VMWare</strong>나 <strong>VirtualBox</strong> 같은 가상 머신과는 다른 개념이지만, 가상화라는 점에서는 비슷한 도구라고 볼 수 있겠네요.</p>
+
+<p>근데 도커와 같은 가상화가 왜 나스와 같은 개인용 홈서버 구축에 획기적인 도구가 되었을까요? 그건 일단 도커만 설치가 잘 되었다면, 컨테이너 (가상화 공간) 내부는 완벽하게 제작자 의도대로 돌아가는 공간이 되어 있기 때문입니다. 따라서 환경별 차이로 발생하는 설치 문제에 일일이 대응할 필요가 없어지므로, 제작자와 사용자 모두에게 편리한 설치 환경을 제공할 수 있습니다.</p>
+
+<h1 id="omv4에-docker-설치하기">OMV4에 Docker 설치하기</h1>
+
+<p>OMV4는 Docker CE의 플러그인을 제공하고 있어요. <strong>시스템 &gt; OMV-Extras</strong> 페이지의 저장소 탭에서 이를 활성화 시켜줍니다.</p>
+
+<p><img src="/assets/images/2019-12-22/2019-12-22-01-02.png" alt="Docker CE 저장소 활성화" /></p>
+
+<p>그리고 이제 <strong>시스템 &gt; 플러그인</strong> 페이지에 들어가면 아래와 같이 Docker 패키지가 추가되어 있어요. 설치합니다.</p>
+
+<p><img src="/assets/images/2019-12-22/2019-12-22-01-03.png" alt="Docker CE 패키지 설치" /></p>
+
+<p>설치하고 나면 <strong>서비스 &gt; Docker</strong> 메뉴가 추가된 것이 보입니다. 메뉴에 접속하기 전에 Docker 시스템에서 사용하는 데이터를 넣어 둘 공간을 만들어야 하는데요, 이를 위해 공유 폴더 하나를 생성합니다.</p>
+
+<p><img src="/assets/images/2019-12-22/2019-12-22-01-04.png" alt="Docker 시스템 폴더 생성" /></p>
+
+<p>사실, 이 폴더를 만들지 않고 OMV 내부의 운영체제 공간에 이를 생성하게 할 수도 있어요. 그리고 이 폴더는 우리가 직접 들어가 볼 이유도, 권한도 없으므로 그 편도 나쁘지 않습니다. 다만 이 공간의 용량이 설치하는 도커 서비스에 따라 굉장히 유동적일 수 있으므로, 운영체제 공간의 용량이 부족하다고 생각한다면 넉넉한 곳에 공유 폴더를 생성하여 잡아주도록 합시다.</p>
+
+<p>이제 <strong>서비스 &gt; Docker</strong> 페이지에서 도커 서비스를 활성화시킵니다.</p>
+
+<p><img src="/assets/images/2019-12-22/2019-12-22-01-05.png" alt="Docker 서비스 활성화" /></p>
+
+<p>쨘! 그럼 이제 아래와 같이 도커가 활성화되어 준비중인 것을 볼 수 있습니다.</p>
+
+<p><img src="/assets/images/2019-12-22/2019-12-22-01-06.png" alt="Docker 관리 페이지" /></p>
+
+<p>이제 도커를 사용할 준비가 끝났네요. 이제 컨테이너를 설치해 봅시다.</p>
+
+<h1 id="docker-컨테이너-설치">Docker 컨테이너 설치</h1>
+
+<p>도커를 사용하여 배포되는 많은 서비스는 <a href="https://hub.docker.com/" target="_blank"><strong>Docker Hub</strong></a>라는 이미지 공개 저장소에서 공유되고 있어요. 도커로 배포되는 서비스에 특별한 설명이 없을 경우, 당연히 이 곳에서 받을 수 있다고 생각해도 될 정도입니다.</p>
+
+<p>누구나 도커 이미지를 배포할 수 있는 곳이기 때문에, 잘 관리되어 원활하게 동작하는 이미지를 찾는 것이 쉬운 설치의 지름길입니다.</p>
+
+<p>잘 만들어진 이미지는 보통,</p>
+
+<ul>
+  <li>서비스 개발사 공식 이미지 (Official Image 태그가 붙어 있고, 이미지 이름이 ‘아이디/이미지명’ 구조가 아닌 그냥 ‘이미지명’ 으로 되어 있습니다.)</li>
+  <li>다운로드 횟수가 많은 이미지</li>
+  <li>매뉴얼이 잘 써진 이미지</li>
+</ul>
+
+<p>정도가 되겠습니다. <del>사실 가장 좋은 건 남들이 깔아봤다는 이미지</del></p>
+
+<p>자, 이제 하나 골라서 설치해 봅시다.</p>
+
+<h2 id="docker-실행-명령-이해하기">Docker 실행 명령 이해하기</h2>
+
+<p><a href="https://docs.docker.com/engine/reference/commandline/run/" target="_blank"><strong>docker run 공식 문서</strong></a></p>
+
+<p>도커 이미지는 보통 이미지의 실행 명령어와 같이 공유가 됩니다. 이 명령어가 어떤 의미인지를 이해하고, 각자의 상황에 맞게 바꿔주는 것이 가장 중요합니다.</p>
+
+<p>일반적으로 <code class="highlighter-rouge">docker run</code>으로 시작되는 이 실행 명령어의 각 요소가 어떤 의미인지 알아봅시다. 예시로는 제가 제작한 <del>허접한</del> 이미지를 가져왔어요.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -d \
+  --name=showdown \
+  -e PUID=0 \
+  -e PGID=100 \
+  -e PERMISSION=777 \
+  -p 4080:80 \
+  -p 4040:4040 \
+  -p 4088:8080 \
+  -p 4091:9091 \
+  -p 4413:51413 \
+  -p 4413:51413/udp \
+  -v /path/to/transmission/downloads:/transmission \
+  -v /path/to/showdown:/showdown \
+  -v /path/to/showdown-manager:/showdown-manager \
+  -v /path/to/output/files:/output \
+  --restart unless-stopped \
+  banyazavi/showdown:amd64
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">\</code> (역슬래시, 환경에 따라 <code class="highlighter-rouge">￦</code> 으로 보일 수도 있습니다.) 는 터미널에서 명령이 끝나지 않았음을 의미합니다. 즉, 저 명령은 ‘'를 제거하고 한 줄로 쓴 것과 동일해요. 근데 그건 너무 길잖아요. 그래서 보통 저렇게 나누어 씁니다.</p>
+
+<h3 id="docker-run">docker run</h3>
+
+<p><code class="highlighter-rouge">docker run</code>은 컨테이너 만들어 실행한다는 의미입니다.</p>
+
+<h3 id="-d">-d</h3>
+
+<p><code class="highlighter-rouge">-d</code>는 이 컨테이너를 백그라운드로 실행한다는 의미에요. 이 옵션이 생략된다면 명령 실행 시 로그가 화면에 출력되며, 터미널 종료 시 컨테이너도 종료하게 됩니다.</p>
+
+<p>여기까지는 OMV 도커 플러그인에서 신경쓸 필요가 없는 부분입니다. 플러그인에서는 <code class="highlighter-rouge">docker run -d</code>까지를 당연히 사용하는 것으로 간주하거든요. 하지만 이 다음부터는 상황에 따라 바꿔줘야 할 일이 굉장히 많아집니다.</p>
+
+<h3 id="namecontainter_name">–name=CONTAINTER_NAME</h3>
+
+<p>이 부분은 컨테이너 각각을 인식하는 이름을 지어주는 부분입니다. 같은 이미지에 대한 컨테이너를 여러 개 만들 수도 있으므로, 이를 구분해 주기 위해 사용합니다.</p>
+
+<p>이 부분을 생략하면 임의의 이름으로 컨테이너가 생성되게 됩니다.</p>
+
+<blockquote>
+  <p><strong>[NOTE]</strong></p>
+
+  <p>도커가 임의로 컨테이너 이름을 붙이는 규칙은 <strong>형용사_과학자 이름</strong> 구조입니다. 컨테이너 이름을 보고 어떤 사람을 의미하는 것인지 추측해보세요. <del>전 mad_einstein 나옴</del></p>
+</blockquote>
+
+<h3 id="-e-keyvalue">-e KEY=VALUE</h3>
+
+<p><code class="highlighter-rouge">-e</code>는 환경 변수를 지정하는 옵션입니다. 컨테이너 실행 시 상황에 따라 설정값을 바꿔줘야 하는 경우가 있는데, 그 값을 컨테이너 내부에 전달해 주는 옵션이에요.</p>
+
+<p>예시처럼 <code class="highlighter-rouge">-e PUID=0</code> 이라고 적혀 있다면, PUID라는 내부 옵션을 0으로 설정한다는 뜻입니다.</p>
+
+<p>이 옵션이 무슨 의미인지, 무슨 값을 사용할 수 있는지는 이미지마다 달라요. 해당 도커 이미지의 매뉴얼을 확인하세요.</p>
+
+<h3 id="-p-local_portcontainer_port">-p LOCAL_PORT:CONTAINER_PORT</h3>
+
+<p><code class="highlighter-rouge">-p</code>는 이 컨테이너에서 사용하는 포트를 컨테이너 바깥 (= 우리가 접속할 수 있는 곳) 과 연결해 줄 수 있는 포트 매핑 옵션입니다. 어렵게 생각할 것 없이, 컨테이너를 공유기로 가정하고, 그 안팎으로 포드포워딩을 해준다고 생각하면 됩니다.</p>
+
+<p>따라서 <code class="highlighter-rouge">-p 4080:80</code>은 컨테이너 내부에서 사용하는 <code class="highlighter-rouge">80</code>번 포트를 컨테이너 밖에서는 <code class="highlighter-rouge">4080</code>번으로 생각하고 접근한다는 의미입니다.</p>
+
+<p>보통 <code class="highlighter-rouge">80</code>번 포트는 웹 서버가 사용하는 포트이므로, 컨테이너 설치 후 웹 브라우저를 열어 <code class="highlighter-rouge">나스_주소:4080</code>으로 접속하면 서비스에 관련한 뭔가가 뜰 것을 기대할 수 있죠.</p>
+
+<p><code class="highlighter-rouge">:</code> 왼쪽의 로컬 포트는 나스에서 현재 사용중인 포트와 겹치면 안 되므로, 이미 사용중인 서비스의 포트를 고려하여 겹치지 않는 번호를 할당합니다. 일반적으로 <strong>HTTP</strong> 공식 포트인 <code class="highlighter-rouge">80</code>, <strong>HTTPS</strong>의 <code class="highlighter-rouge">443</code>이 잘 겹치고, 이 포트에서 파생된 <code class="highlighter-rouge">8080</code>, <code class="highlighter-rouge">8000</code> 등도 자주 겹치는 편이에요.</p>
+
+<h3 id="-v-localpathcontainerpath">-v /local/path:/container/path</h3>
+
+<p><code class="highlighter-rouge">-v</code>는 볼륨 바인딩이라고 하여, 컨테이너 내부의 특정 경로를 나스의 특정 경로와 이어 주는 역할을 합니다. 일종의 공유 폴더와 같은 셈이죠. 또한 폴더 뿐만 아니라 파일도 연결할 수 있습니다.</p>
+
+<p>이에 따라서 예시의 <code class="highlighter-rouge">-v /path/to/transmission/downloads:/transmission</code> 부분을 해석하면, 컨테이너 내부에 <code class="highlighter-rouge">/transmission</code>이라는 폴더가 있는데, 이를 나스의 <code class="highlighter-rouge">/path/to/transmission/downloads</code> 폴더와 연결시킨다는 뜻입니다. 물론 <code class="highlighter-rouge">/path/to/transmission/downloads</code>라는 폴더가 있을 리 없으니, 그 부분을 이 목적에 사용될 폴더의 경로로 바꿔줘야 겠죠.</p>
+
+<p>주의할 것은, 반드시 <code class="highlighter-rouge">/</code>으로 시작되는 절대 경로로 적어야 한다는 점입니다. 목적 폴더에 접속한 뒤 <code class="highlighter-rouge">pwd</code> 명령을 실행하여 절대 경로를 확인할 수 있습니다.</p>
+
+<h3 id="restart-restart_policy">–restart restart_policy</h3>
+
+<p>도커는 가상 머신과는 다르게, 컨테이너에서 실행하는 내용이 끝나면 컨테이너를 멈추게 됩니다. <code class="highlighter-rouge">--restart</code>는 이 때 컨테이너를 어떻게 재시작할지 정책에 대한 설정입니다. 네 종류가 있어요.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">no</code>: 재시작하지 않습니다.</li>
+  <li><code class="highlighter-rouge">always</code>: 항상 재시작합니다.</li>
+  <li><code class="highlighter-rouge">unless-stopped</code>: 종료되지 않는 한 항상 재시작합니다.</li>
+  <li><code class="highlighter-rouge">on-failure</code>: 컨테이너가 오류로 꺼졌을 때만 재시작합니다.</li>
+</ul>
+
+<p>2번과 3번이 차이가 없어 보일 수 있는데, 두 옵션의 차이는 컨테이너가 중단된 후 도커 (또는 나스째로) 가 재부팅 되었을 때 차이가 있습니다. <code class="highlighter-rouge">always</code>는 무조건 다시 켜지지만, <code class="highlighter-rouge">unless-stopped</code>는 도커가 중단된 후 나스가 재부팅 되었을 때는 다시 켜지지 않아요.</p>
+
+<h3 id="userimagetag">user/image[:tag]</h3>
+
+<p><code class="highlighter-rouge">banyazavi/showdown:amd64</code>으로 표현되어 있는 마지막 부분은 이 이미지의 정보입니다.</p>
+
+<p><code class="highlighter-rouge">tag</code>는 생략 가능한 옵션으로, 생략하면 <code class="highlighter-rouge">latest</code> 태그를 찾아 실행시키게 됩니다. 버전이나 실행 환경의 차이에 따라 이미지를 나누어둔 경우가 있으므로, <code class="highlighter-rouge">latest</code>를 사용해도 되는지, 자신에게 맞는 태그가 있는지 확인할 필요가 있어요.</p>
+
+<h1 id="omv4에서-도커-컨테이너-실행하기---nextcloud-설치">OMV4에서 도커 컨테이너 실행하기 - Nextcloud 설치</h1>
+
+<p>물론 우리는 저 내용을 터미널에 입력할 필요는 없습니다. <strong>서비스 &gt; Docker</strong> 페이지에서 같은 작업을 수행할 수 있거든요.</p>
+
+<h2 id="실행-명령-확인">실행 명령 확인</h2>
+
+<p>그 시범으로 <a href="https://nextcloud.com/" target="_blank"><strong>Nextcloud</strong></a>라는 설치형 클라우드를 가져왔습니다. 그리고 <a href="https://hub.docker.com/_/nextcloud/" target="_blank"><strong>Docker Hub - Nextcloud</strong></a>의 매뉴얼과 인터넷의 수많은 팁을 통해 아래와 같은 <code class="highlighter-rouge">docker run</code> 명령으로 서비스를 설치할 수 있다고 알게 되었습니다. <del>고 칩시다.</del></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run -d \
+  --name=omv4_nextcloud
+  --restart always \
+  -p 6080:80 \
+  -v nextcloud:/var/www/html \
+  nextcloud
+</code></pre></div></div>
+
+<p>이 명령어 내용대로 컨테이너를 만들어 볼 겁니다.</p>
+
+<h2 id="docker-플러그인에서-설정">Docker 플러그인에서 설정</h2>
+
+<p>우선, 뭔가 폴더를 연결시켜줘야 하는 듯 싶으니, 공유 폴더에서 <code class="highlighter-rouge">nextcloud</code>라는 폴더를 하나 만들어 둡니다.</p>
+
+<p>그리고 <strong>서비스 &gt; Docker</strong> 페이지에서 <strong>복제본 당겨오기</strong> 버튼을 눌러 이미지를 가져오구요.</p>
+
+<p><img src="/assets/images/2019-12-22/2019-12-22-01-07.png" alt="Nextcloud 이미지 가져오기" /></p>
+
+<p>꼬리표 부분을 생략하면 <code class="highlighter-rouge">latest</code> 태그의 이미지를 가져오게 됩니다. 혹시 다른 <code class="highlighter-rouge">tag</code>를 가져오려면 <strong>꼬리표</strong> 에 태그를 입력해 주세요.</p>
+
+<p>그리고 사용할 nextcloud 이미지를 클릭하고 <strong>복제본 실행</strong> 버튼을 눌러 아래 그림과 같이 설정합니다.</p>
+
+<p><img src="/assets/images/2019-12-22/2019-12-22-01-08.png" alt="Nextcloud 컨테이너 실행" /></p>
+
+<p>각 부분이 무엇을 의미하는지는, 윗 챕터를 열심히 읽었으면 쉽게 이해할 수 있을 거에요.</p>
+
+<p>이 경우에는 환경 변수가 엄청나게 많이 나오는데요, 이것은 이미지에서 기본값으로 설정해둔 모든 환경 변수가 다 표시되는 것으로 직접 설정한 것이 아닙니다. 만약 필요하다면 여기에 환경 변수를 새롭게 추가하거나 기존 변수를 수정할 수도 있습니다.</p>
+
+<h2 id="컨테이너-실행-확인">컨테이너 실행 확인</h2>
+
+<p>일반적으로 <code class="highlighter-rouge">80</code> 포트가 서비스 접속 포트이고, 우리는 이것을 <code class="highlighter-rouge">6080</code>으로 설정했으니, <code class="highlighter-rouge">http://나스주소:6080</code>으로 접속해 봅시다.</p>
+
+<p><img src="/assets/images/2019-12-22/2019-12-22-01-09.png" alt="Nextcloud 최초 접속 화면" /></p>
+
+<p>잘 뜨네요. 이제 이 페이지에서 남은 설정을 완료하고 서비스를 사용하면 됩니다.</p>
+
+<blockquote>
+  <p><strong>[NOTE]</strong></p>
+
+  <p>지금 글의 방법으로 설치한 넥스트클라우드는 별도의 DB를 설치하지 않아 <strong>SQLite</strong>로만 설정하여 사용할 수 있습니다. 그림에서 경고하듯 성능이 좋은 편은 아니니 실제로 사용하시려면 DB를 같이 설치하여 사용하는 것이 좋습니다.</p>
+</blockquote>
+
+<hr />
+
+<h1 id="그리고-남은-이야기">그리고 남은 이야기</h1>
+
+<p>이것으로 <strong>OMV4 자작 NAS 구축하기</strong>는 끝입니다. 나머지는 기존의 글을 응용하여 직접 플러그인이나 도커 컨테이너를 설치하여 기능을 확장할 수 있을 거에요.</p>
+
+<p><strong>openmediavault</strong>는 시놀로지에 비해서는 편의성도, 기능도 완벽하지 못한 나스 솔루션이지만, 커뮤니티에서 개발하여 배포하는 무료 솔루션 중에서는 가장 직관적이고 다루기 쉬운 것이라고 생각합니다. OMV5에서 플러그인 다수를 포기하고 대부분을 외부의 도커 서비스로 대체한 것은 별로 마음에 들지 않긴 하지만… 커뮤니티 개발의 한계라고 납득은 되구요.</p>
+
+<p>그나마 다행인 점은, 데비안을 기반으로 하여 돌아가기 때문에 데비안/우분투 팁을 참고하여 문제를 해결하기 좋다는 점이 아닐까요.</p>
+
+<p>이 글들을 통해 성공적인 자작 나스 구축이 되셨으면 좋겠습니다. 감사합니다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#let-s-encrypt" class="page__taxonomy-item" rel="tag">Let's Encrypt</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#nas" class="page__taxonomy-item" rel="tag">NAS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#openmediavault" class="page__taxonomy-item" rel="tag">openmediavault</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#ssl" class="page__taxonomy-item" rel="tag">SSL</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#tls" class="page__taxonomy-item" rel="tag">TLS</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#omv4-%EC%9E%90%EC%9E%91-nas-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0" class="page__taxonomy-item" rel="tag">OMV4 자작 NAS 구축하기</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-12-22T00:00:00+09:00">December 22, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Docker+%EC%84%9C%EB%B9%84%EC%8A%A4+%EC%84%A4%EC%B9%98%20http%3A%2F%2F0.0.0.0%3A4000%2F2019-12-22%2FDocker-%25EC%2584%259C%25EB%25B9%2584%25EC%258A%25A4-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2F2019-12-22%2FDocker-%25EC%2584%259C%25EB%25B9%2584%25EC%258A%25A4-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2F2019-12-22%2FDocker-%25EC%2584%259C%25EB%25B9%2584%25EC%258A%25A4-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9" class="pagination--pager" title="Let’s Encrypt SSL/TLS 인증서 적용
+">이전</a>
+    
+    
+      <a href="/2020-02-20/Docker-Cookbook" class="pagination--pager" title="Docker Cookbook
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-03-01/Nginx-Proxy-Manager-%EC%84%A4%EC%B9%98" rel="permalink">Nginx Proxy Manager 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  대부분의 서비스를 웹 페이지를 통해 접속할 거에요. 그러면 HTTPS 설정 서비스부터 설치하는 것이 좋겠죠?
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-23/Docker%EC%99%80-Portainer-%EC%84%A4%EC%B9%98" rel="permalink">Docker와 Portainer 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  이 시리즈를 위한 가장 기본적인 도구 두 개를 먼저 설치해야 합니다.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-20/Docker-Cookbook" rel="permalink">Docker Cookbook
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  컴퓨터 업계에서 “Cookbook”이란 어떤 것을 쉽게 설정하거나 구현할 수 있게 하는 코드 묶음을 의미합니다. 우리는 이 쿡북을 통해서 도커 서비스를 쉽게 설치해 보려고 해요.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9" rel="permalink">Let’s Encrypt SSL/TLS 인증서 적용
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  웹 브라우저를 통해 나스에 접속했을 때, ‘주의 요함’ 이라는 메시지가 뜨면 조금 그렇겠죠?
+
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Banyazavi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://0.0.0.0:4000/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2019-12-22/Docker 서비스 설치"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://banyazavis-weblog-repository.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

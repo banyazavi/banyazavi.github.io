@@ -1,0 +1,713 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>리눅스에서 부트 이미지 플래싱하기 - 반야자비의 웹로그 저장소</title>
+<meta name="description" content="  SD Memory Card Formatter와 Win32 Disk Imager와 같은 복잡한 툴 없이도 SBC에 OS 이미지를 설치할 수 있습니다.">
+
+
+  <meta name="author" content="반야자비">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="반야자비의 웹로그 저장소">
+<meta property="og:title" content="리눅스에서 부트 이미지 플래싱하기">
+<meta property="og:url" content="http://0.0.0.0:4000/2019-09-15/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%97%90%EC%84%9C-%EB%B6%80%ED%8A%B8-%EC%9D%B4%EB%AF%B8%EC%A7%80-%ED%94%8C%EB%9E%98%EC%8B%B1%ED%95%98%EA%B8%B0">
+
+
+  <meta property="og:description" content="  SD Memory Card Formatter와 Win32 Disk Imager와 같은 복잡한 툴 없이도 SBC에 OS 이미지를 설치할 수 있습니다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-09-15T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/2019-09-15/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%97%90%EC%84%9C-%EB%B6%80%ED%8A%B8-%EC%9D%B4%EB%AF%B8%EC%A7%80-%ED%94%8C%EB%9E%98%EC%8B%B1%ED%95%98%EA%B8%B0">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Banyazavi",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="b7a6aab44db08c8b2a0f6481b3d71ae43203d2c5">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="반야자비의 웹로그 저장소 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          반야자비의 웹로그 저장소
+          <span class="site-subtitle">알게 된 것, 알아가고 있는 것 그리고 알리고 싶은 것을 기록합니다.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.jpg" alt="반야자비" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">반야자비</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I come not, friends, to steal away your hearts…<br />
+- Julius Caesar, Act III, scene ii<br />
+<br />
+친구여, 나는 너의 하트를 빼앗으려 온 것이 아니다…<br />
+- 줄리어스 시저, 3막, 2장</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:banyazavi.choi@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://www.banyazavi.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">Series</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-06/OMV4-%EC%9E%90%EC%9E%91-NAS-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0" class="">- OMV4 NAS</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2020-02-20/Docker-Cookbook" class="">- Docker Cookbook</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="리눅스에서 부트 이미지 플래싱하기">
+    <meta itemprop="description" content="  SD Memory Card Formatter와 Win32 Disk Imager와 같은 복잡한 툴 없이도 SBC에 OS 이미지를 설치할 수 있습니다.">
+    <meta itemprop="datePublished" content="September 15, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">리눅스에서 부트 이미지 플래싱하기
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <blockquote>
+  <p><a href="https://www.sdcard.org/downloads/formatter_4/" target="_blank"><strong>SD Memory Card Formatter</strong></a>와 <a href="https://sourceforge.net/projects/win32diskimager/" target="_blank"><strong>Win32 Disk Imager</strong></a>와 같은 복잡한 툴 없이도 SBC에 OS 이미지를 설치할 수 있습니다.</p>
+</blockquote>
+
+<!--more-->
+
+<p><del>설치 방법이 더 복잡해 보이는 것은 기분 탓입니다.</del></p>
+
+<hr />
+
+<h1 id="왜-이런-방법을-찾게-되었냐면">왜 이런 방법을 찾게 되었냐면</h1>
+
+<p>제가 가지고 있는 <strong>ODROID XU4</strong> 때문은 <strong>eMMC</strong>를 디스크로 사용하거든요…</p>
+
+<p>오드로이드는 다른 <strong>SBC</strong><sup>Single Board Computer</sup>와는 다르게 <strong>eMMC</strong><sup>embedded Multi Media Card</sup> 슬롯을 제공하는데요, 이 규격은 보통 스마트폰에 주로 사용되는 것으로 SBC에 자주 쓰이는 <strong>SD</strong><sup>Secure Digital</sup> 카드보다 읽고 쓰는 속도가 빠릅니다. 그래서 XU4를 구매할 때, eMMC를 덥썩 샀고, 그 결과…</p>
+
+<p>문제는 이게 주로 “스마트폰에 <strong>납땜해서</strong> 들어가는 모듈”이고, 그래서 일반적인 리더기가 없다는 점입니다. 오드로이드용 eMMC 전용 리더기가 있긴 한데 품질이 매우 조악해서 벌써 고장났어요. 다시 구하자니 이게 또 흔하게 파는 물건이 아니라 쉽게 구할 수도 없구요.</p>
+
+<p>그래서 결국 SD카드에 리눅스가 설치된 eMMC 슬롯이 달려있는 XU4 그 자체를 리더기로 해서 설치하는 방법을 찾게 되었습니다. 저는 이 방법을 주로 eMMC에 OS 플래싱할 때만 사용했는데, 이리 저리 알아보니 해놀로지 부트로더 설치할 경우 등, 많은 상황에 응용이 가능한 것 같습니다.</p>
+
+<p>이 글은 XU4에 설치하는 것을 가정해서 작성했는데요, 달라지는 부분을 파악할 수 있다면 다른 장치에도 적용할 수 있을 거에요.</p>
+
+<h1 id="준비물">준비물</h1>
+
+<ul>
+  <li>리눅스가 설치된 PC</li>
+  <li>부트 이미지를 설치할 메모리와 이를 PC에 인식할 수 있는 장비</li>
+  <li>부트 이미지 파일 (OS 설치파일 압축을 풀었는데 .img이다? 바로 그겁니다.)</li>
+</ul>
+
+<h1 id="플래싱할-장치-찾기">플래싱할 장치 찾기</h1>
+
+<p><code class="highlighter-rouge">fdisk</code> 명령을 통해 플래싱할 장치의 경로를 찾습니다. 너무 많은 장비가 꽂혀있을 경우 찾기가 매우 난감할 수 있는데요, 용량 등의 정보를 잘 확인하여 실수하지 않도록 합니다.</p>
+
+<h2 id="명령">명령</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo fdisk -l
+</code></pre></div></div>
+
+<h2 id="결과">결과</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+Disk /dev/mmcblk0: 14.7 GiB, 15758000128 bytes, 30777344 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: dos
+Disk identifier: 0x3cedfd53
+
+Device         Boot  Start      End  Sectors  Size Id Type
+/dev/mmcblk0p1        2048   264191   262144  128M  c W95 FAT32 (LBA)
+/dev/mmcblk0p2      264192 30775296 30511105 14.6G 83 Linux
+...
+</code></pre></div></div>
+
+<p>제가 이미지를 플래싱할 장치는 16GB의 eMMC 장치입니다. <code class="highlighter-rouge">/dev/mmcblk0p1</code>와 <code class="highlighter-rouge">/dev/mmcblk0p2</code>에 파티션이 이미 할당되어 있는데요, 이전에 리눅스를 설치했던 흔적입니다. 어차피 밀어버릴 것이므로 신경쓸 필요는 없습니다. 아, 자료가 지워지므로 백업을 했는지는 확인해야 겠네요.</p>
+
+<p>아무튼 여기서 우리는 <code class="highlighter-rouge">/dev/mmcblk0</code>라는 장치 경로를 확인했습니다. 기억해 둡시다.</p>
+
+<h1 id="플래싱-명령-수행">플래싱 명령 수행</h1>
+
+<p><code class="highlighter-rouge">dd</code> 명령어를 통해 이미지를 플래싱합니다.</p>
+
+<h2 id="명령-1">명령</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo dd bs=4M if=ubuntu-18.04-odroid-xu4.img of=/dev/mmcblk0 &amp;&amp; sync
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">dd</code>는 파일 변환/복사 명령어입니다. 사용된 옵션 의미는 이렇습니다.</p>
+
+<ul>
+  <li>bs=4M (Block Size: 한번에 읽고 쓸 용량 단위, 여기선 4M로 했는데 적당한 다른 용량을 사용해도 상관 없는 것 같네요.)</li>
+  <li>if=ubuntu-18.04-odroid-xu4.img (Stdin from File: 복사할 원본 파일)</li>
+  <li>of=/dev/mmcblk0 (Stdout to File: 복사할 목적 파일)</li>
+  <li>sync (메모리와 디스크를 동기화. dd 이후에도 플래싱이 덜 끝난 상황을 방지한다고 해요.)</li>
+</ul>
+
+<h2 id="명령-xz-압축-파일에서-바로-플래싱">명령 (.xz 압축 파일에서 바로 플래싱)</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo xzcat ubuntu-18.04-odroid-xu4.img.xz | dd bs=4M of=/dev/mmcblk0 &amp;&amp; sync
+</code></pre></div></div>
+
+<p>OS 설치 이미지는 <code class="highlighter-rouge">.xz</code> 형식으로 압축되어 있는 경우가 많은데, 이 경우에는 압축을 풀며 바로 플래싱을 진행할 수도 있습니다.</p>
+
+<h2 id="결과-1">결과</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>665+1 records in
+665+1 records out
+2791309312 bytes (2.8 GB, 2.6 GiB) copied, 229.743 s, 12.1 MB/s
+</code></pre></div></div>
+
+<p>위와 같이 복사가 진행되었다는 결과가 출력됩니다.</p>
+
+<hr />
+
+<h1 id="그리고-남은-이야기">그리고 남은 이야기</h1>
+
+<p>이러한 대삽질을 겪고 난 교훈으로, 현재 사용하는 <code class="highlighter-rouge">ODROID H2</code>는 eMMC를 구입하지 않았습니다. <del>하지만 XU4가 테스트 머신이 되어버려서 dd를 더 자주 쓰게 됨…</del></p>
+
+<p>물론, H2는 <code class="highlighter-rouge">NVMe</code><sup>Non-Volatile Memory express</sup>라는 훨씬 빠른 저장장치가 지원되고 있기 때문이기도 합니다. 또한 x86 머신에서는 eMMC가 잘 사용되는 장치가 아니어서 드라이버 지원이 미비하기도 하구요.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#emmc" class="page__taxonomy-item" rel="tag">eMMC</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#sbc" class="page__taxonomy-item" rel="tag">SBC</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#%ED%94%8C%EB%9E%98%EC%8B%B1" class="page__taxonomy-item" rel="tag">플래싱</a>
+    
+    </span>
+  </p>
+
+
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-09-15T00:00:00+09:00">September 15, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EB%A6%AC%EB%88%85%EC%8A%A4%EC%97%90%EC%84%9C+%EB%B6%80%ED%8A%B8+%EC%9D%B4%EB%AF%B8%EC%A7%80+%ED%94%8C%EB%9E%98%EC%8B%B1%ED%95%98%EA%B8%B0%20http%3A%2F%2F0.0.0.0%3A4000%2F2019-09-15%2F%25EB%25A6%25AC%25EB%2588%2585%25EC%258A%25A4%25EC%2597%2590%25EC%2584%259C-%25EB%25B6%2580%25ED%258A%25B8-%25EC%259D%25B4%25EB%25AF%25B8%25EC%25A7%2580-%25ED%2594%258C%25EB%259E%2598%25EC%258B%25B1%25ED%2595%2598%25EA%25B8%25B0" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2F2019-09-15%2F%25EB%25A6%25AC%25EB%2588%2585%25EC%258A%25A4%25EC%2597%2590%25EC%2584%259C-%25EB%25B6%2580%25ED%258A%25B8-%25EC%259D%25B4%25EB%25AF%25B8%25EC%25A7%2580-%25ED%2594%258C%25EB%259E%2598%25EC%258B%25B1%25ED%2595%2598%25EA%25B8%25B0" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2F2019-09-15%2F%25EB%25A6%25AC%25EB%2588%2585%25EC%258A%25A4%25EC%2597%2590%25EC%2584%259C-%25EB%25B6%2580%25ED%258A%25B8-%25EC%259D%25B4%25EB%25AF%25B8%25EC%25A7%2580-%25ED%2594%258C%25EB%259E%2598%25EC%258B%25B1%25ED%2595%2598%25EA%25B8%25B0" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2019-09-08/root-%EB%8F%84%EB%A9%94%EC%9D%B8%EC%9D%84-www%EB%A1%9C-%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%ED%8A%B8-%EC%8B%9C%ED%82%A4%EA%B8%B0" class="pagination--pager" title="root 도메인을 www로 리다이렉트 시키기
+">이전</a>
+    
+    
+      <a href="/2019-09-28/ODROID-XU4-OMV-%EC%84%A4%EC%B9%98-%ED%9B%84-%ED%8C%8C%ED%8B%B0%EC%85%98-%EC%9A%A9%EB%9F%89-%EB%8A%98%EB%A6%AC%EA%B8%B0" class="pagination--pager" title="ODROID XU4 - OMV 설치 후 파티션 용량 늘리기
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-03-01/Nginx-Proxy-Manager-%EC%84%A4%EC%B9%98" rel="permalink">Nginx Proxy Manager 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  대부분의 서비스를 웹 페이지를 통해 접속할 거에요. 그러면 HTTPS 설정 서비스부터 설치하는 것이 좋겠죠?
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-23/Docker%EC%99%80-Portainer-%EC%84%A4%EC%B9%98" rel="permalink">Docker와 Portainer 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  이 시리즈를 위한 가장 기본적인 도구 두 개를 먼저 설치해야 합니다.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-20/Docker-Cookbook" rel="permalink">Docker Cookbook
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  컴퓨터 업계에서 “Cookbook”이란 어떤 것을 쉽게 설정하거나 구현할 수 있게 하는 코드 묶음을 의미합니다. 우리는 이 쿡북을 통해서 도커 서비스를 쉽게 설치해 보려고 해요.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" rel="permalink">Docker 서비스 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  도커를 사용하게 되면 OMV 플러그인에 한정되지 않는 수많은 서비스를 설치할 수 있습니다. 그리고 요즘은 도커로 배포되는 서비스도 많아졌어요.
+
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Banyazavi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://0.0.0.0:4000/2019-09-15/%EB%A6%AC%EB%88%85%EC%8A%A4%EC%97%90%EC%84%9C-%EB%B6%80%ED%8A%B8-%EC%9D%B4%EB%AF%B8%EC%A7%80-%ED%94%8C%EB%9E%98%EC%8B%B1%ED%95%98%EA%B8%B0";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2019-09-15/리눅스에서 부트 이미지 플래싱하기"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://banyazavis-weblog-repository.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

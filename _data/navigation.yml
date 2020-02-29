@@ -1,0 +1,46 @@
+# main links
+main:
+  - title: Categories
+    url: /categories/
+  - title: Tags
+    url: /tags/
+
+default:
+  - title: Series
+    children:
+    - title: "- OMV4 NAS"
+      url: /2019-10-06/OMV4-자작-NAS-구축하기
+    - title: "- Docker Cookbook"
+      url: /2020-02-20/Docker-Cookbook
+
+omv4_guide:
+  - title: OMV4 NAS
+    url: /2019-10-06/OMV4-자작-NAS-구축하기
+    children:
+      - title: "- 디스크 마운트 및 공유 폴더 설정"
+        url: /2019-10-09/디스크-마운트-및-공유-폴더-설정
+      - title: "- 그룹 및 사용자 추가, 공유 폴더 권한 부여"
+        url: /2019-10-13/그룹-및-사용자-추가,-공유-폴더-권한-부여
+      - title: "- SMB 네트워크 드라이브 설정"
+        url: /2019-10-26/SMB-네트워크-드라이브-설정
+      - title: "- FTP 설정"
+        url: /2019-10-27/FTP-설정
+      - title: "- DuckDNS DDNS 설치"
+        url: /2019-11-10/DuckDNS-DDNS-설치
+      - title: "- Transmission BitTorrent 클라이언트 설치"
+        url: /2019-11-24/Transmission-BitTorrent-클라이언트-설치
+      - title: "- Nginx 역방향 프록시 설정"
+        url: /2019-12-01/Nginx-역방향-프록시-설정
+      - title: "- Let’s Encrypt SSL/TLS 인증서 적용"
+        url: /2019-12-14/Let's-Encrypt-SSL-TLS-인증서-적용
+      - title: "- Docker 서비스 설치"
+        url: /2019-12-22/Docker-서비스-설치
+
+docker_cookbook:
+  - title: Docker Cookbook
+    url: /2020-02-20/Docker-Cookbook
+    children:
+      - title: "- Docker와 Portainer 설치"
+        url: /2020-02-23/Docker와-Portainer-설치
+      - title: "- Nginx Proxy Manager 설치"
+        url: /2020-03-01/Nginx-Proxy-Manager-설치

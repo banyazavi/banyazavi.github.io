@@ -1,0 +1,911 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>블로그 문서 작성 지침 - 반야자비의 웹로그 저장소</title>
+<meta name="description" content="알게 된 것, 알아가고 있는 것 그리고 알리고 싶은 것을 기록합니다.">
+
+
+  <meta name="author" content="반야자비">
+
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="반야자비의 웹로그 저장소">
+<meta property="og:title" content="블로그 문서 작성 지침">
+<meta property="og:url" content="http://0.0.0.0:4000/doc_guidelines">
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/doc_guidelines">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Banyazavi",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="b7a6aab44db08c8b2a0f6481b3d71ae43203d2c5">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="반야자비의 웹로그 저장소 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          반야자비의 웹로그 저장소
+          <span class="site-subtitle">알게 된 것, 알아가고 있는 것 그리고 알리고 싶은 것을 기록합니다.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.jpg" alt="반야자비" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">반야자비</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I come not, friends, to steal away your hearts…<br />
+- Julius Caesar, Act III, scene ii<br />
+<br />
+친구여, 나는 너의 하트를 빼앗으려 온 것이 아니다…<br />
+- 줄리어스 시저, 3막, 2장</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:banyazavi.choi@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://www.banyazavi.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          <span class="nav__sub-title">Series</span>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-06/OMV4-%EC%9E%90%EC%9E%91-NAS-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0" class="">- OMV4 NAS</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2020-02-20/Docker-Cookbook" class="">- Docker Cookbook</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="블로그 문서 작성 지침">
+    
+    
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">블로그 문서 작성 지침
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+          <aside class="sidebar__right ">
+            <nav class="toc">
+              <header><h4 class="nav__title"><i class="fas fa-file-alt"></i> On This Page</h4></header>
+              <ul class="toc__menu">
+  <li><a href="#문서-메타데이터-정보">문서 메타데이터 정보</a>
+    <ul>
+      <li><a href="#파일명">파일명</a>
+        <ul>
+          <li><a href="#파일명-형식">파일명 형식</a></li>
+        </ul>
+      </li>
+      <li><a href="#머릿말">머릿말</a>
+        <ul>
+          <li><a href="#머릿말-형식">머릿말 형식</a></li>
+          <li><a href="#제목">제목</a></li>
+          <li><a href="#카테고리">카테고리</a></li>
+          <li><a href="#태그">태그</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#markdown-문법의-의미와-규칙-용례">Markdown 문법의 의미와 규칙, 용례</a>
+    <ul>
+      <li><a href="#제목-header">제목 (Header)</a>
+        <ul>
+          <li><a href="#제목-형식">제목 형식</a></li>
+          <li><a href="#eg-순서-표시가-필요한-경우">e.g. 순서 표시가 필요한 경우</a></li>
+        </ul>
+      </li>
+      <li><a href="#강조-bold-and-emphasize">강조 (Bold and Emphasize)</a></li>
+      <li><a href="#취소선-strikethrough">취소선 (Strikethrough)</a></li>
+      <li><a href="#이미지-images">이미지 (Images)</a>
+        <ul>
+          <li><a href="#이미지-형식">이미지 형식</a></li>
+        </ul>
+      </li>
+      <li><a href="#링크-links">링크 (Links)</a>
+        <ul>
+          <li><a href="#링크-형식">링크 형식</a></li>
+        </ul>
+      </li>
+      <li><a href="#목록-lists">목록 (Lists)</a>
+        <ul>
+          <li><a href="#목록-형식">목록 형식</a></li>
+        </ul>
+      </li>
+      <li><a href="#코드-블록-code-blocks">코드 블록 (Code Blocks)</a></li>
+      <li><a href="#수평선-horizontal-rules">수평선 (Horizontal Rules)</a></li>
+      <li><a href="#블록-인용-blockquotes">블록 인용 (Blockquotes)</a>
+        <ul>
+          <li><a href="#블록-인용-사용례">블록 인용 사용례</a></li>
+          <li><a href="#최상단-요약-구절-사용례">최상단 요약 구절 사용례</a></li>
+          <li><a href="#추가-설명-사용례">추가 설명 사용례</a></li>
+        </ul>
+      </li>
+      <li><a href="#기타-markdown-외-문법-요소">기타 Markdown 외 문법 요소</a>
+        <ul>
+          <li><a href="#윗-첨자-superscripts">윗 첨자 (Superscripts)</a></li>
+          <li><a href="#강제-개행">강제 개행</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#표준-문서-규격-및-작성-정책">표준 문서 규격 및 작성 정책</a>
+    <ul>
+      <li><a href="#표준-문서-규격">표준 문서 규격</a></li>
+      <li><a href="#작성-정책">작성 정책</a>
+        <ul>
+          <li><a href="#경어체의-사용">경어체의 사용</a></li>
+          <li><a href="#원어-표현의-사용">원어 표현의 사용</a></li>
+          <li><a href="#소괄호-">소괄호 ()</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#끝으로">끝으로…</a></li>
+</ul>
+            </nav>
+          </aside>
+        
+        <blockquote>
+  <p>이 문서는 <a href="https://blog.banyazavi.com/" target="_blank"><strong>반야자비의 웹로그 저장소</strong></a>의 문서 작성을 위한 지침을 정리합니다.</p>
+</blockquote>
+
+<!--more-->
+
+<p><a href="https://pages.github.com/" target="_blank"><strong>Github Pages</strong></a>의 사이트 빌더인 <a href="https://jekyllrb.com/" target="_blank"><strong>Jekyll</strong></a>은 <strong>Markdown</strong>이라는 편집 문법을 차용하고 있습니다. 이와 같은 사이트 환경에 원활하게 대응하기 위해서는, 사이트를 구성하는 여러 요소에 대한 사용 방법을 명확하게 규정할 필요가 있습니다.</p>
+
+<p>따라서 이 글에서는</p>
+
+<ul>
+  <li>블로그 문서 일관성 확보</li>
+  <li>문서 작성 시 문서 형식에 대한 부담 완화</li>
+</ul>
+
+<p>를 위하여,</p>
+
+<ul>
+  <li>문서 메타데이터 정보</li>
+  <li>Markdown 문법의 의미와 규칙, 용례</li>
+  <li>표준 문서 규격 및 작성 정책</li>
+</ul>
+
+<p>을 정의합니다.</p>
+
+<hr />
+
+<h1 id="문서-메타데이터-정보">문서 메타데이터 정보</h1>
+
+<p><strong>문서 메타데이터 정보</strong>란 깃허브 페이지의 지킬 사이트 빌더를 원활하게 사용하기 위해 추가되는 정보입니다.</p>
+
+<h2 id="파일명">파일명</h2>
+
+<p><strong>파일명</strong>은 <code class="highlighter-rouge">_posts</code> 디렉토리에 기록되는 <code class="highlighter-rouge">.md</code> 확장자를 가진, 개별 문서의 실제 파일에 대한 이름입니다.</p>
+
+<h3 id="파일명-형식">파일명 형식</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>YYYY-MM-DD-문서 제목.md
+</code></pre></div></div>
+
+<p>파일명은 띄어쓰기를 사용합니다. 파일명의 공백 처리에 대한 언더스코어 (<code class="highlighter-rouge">_</code>) 및 하이픈 (<code class="highlighter-rouge">-</code>) 은 허용하지 않습니다.</p>
+
+<p>규칙 이외의 정보는 파일명에 추가되지 않습니다. 동일한 작성 일자와 동일한 문서 제목이 존재하는 경우에는 후행 문서가 다음날 작성된 것으로 간주합니다.</p>
+
+<h2 id="머릿말">머릿말</h2>
+
+<p><strong>머릿말</strong>은 마크다운 문서의 최상단에 위치하는 해당 문서에 대한 정보입니다.</p>
+
+<h3 id="머릿말-형식">머릿말 형식</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+title: 문서 제목
+key: post-YYYY-MM-DD-NO
+[categories:
+  - Category]
+tags:
+  - Tag 1
+  - Tag 2
+  - ...
+---
+</code></pre></div></div>
+
+<ul>
+  <li><strong>title</strong>은 문서의 제목입니다. 이 정보는 문서 목록에 노출되며, 파일명의 해당 요소와 동일해야 합니다.</li>
+  <li><strong>key</strong>는 <a href="https://disqus.com/" target="_blank"><strong>Disqus</strong></a> 댓글 모듈이 페이지를 구분하는 고유의 값입니다. 이 정보는 <code class="highlighter-rouge">post</code>라는 문서 종류 구분자와 <strong>문서 작성일</strong>, <strong>동일 작성일 내 문서 작성 순서</strong> (2자리) 로 구성됩니다.</li>
+  <li><strong>categories</strong>는 연재 문서의 주제 정보입니다. 이 정보가 존재할 경우 반드시 한 개만 등록해야 합니다.</li>
+  <li><strong>tags</strong>는 해당 문서에 대한 키워드의 목록입니다. 이 목록은 사전 순으로 정렬하여 등록해야 합니다.</li>
+  <li><strong>categories</strong>와 <strong>tags</strong>는 한글과 띄어쓰기를 허용합니다.</li>
+</ul>
+
+<h3 id="제목">제목</h3>
+
+<p>문서의 <strong>제목</strong>은 해당 문서의 주제를 가장 잘 드러내는 구절 또는 문장입니다. 가능한 한 문장 이내로 표현하고, 마지막 문장의 마침표 (<code class="highlighter-rouge">.</code>) 는 생략합니다.</p>
+
+<p>문서의 제목이 해당 문서의 파일명과 머릿말의 title로 사용되므로, 이 정보에에 사용 불가능한 값으로 제목을 작성할 수 없습니다 (e.g. 역슬래시 (<code class="highlighter-rouge">\</code>), 콜론 (<code class="highlighter-rouge">:</code>) 등). 부득이하게 이 값을 사용해야 하는 경우 동일 의미의 특수문자를 사용해야 합니다.</p>
+
+<h3 id="카테고리">카테고리</h3>
+
+<p><strong>카테고리</strong>는 연재 문서의 주제 정보로써, <strong>GNB</strong><sup>Global Navication Bar</sup>의 <strong>카테고리</strong> 항목에서의 문서 분류를 위한 값입니다.</p>
+
+<p>이 정보는 문서의 소속으로써 기능하므로, 반드시 한 개의 카테고리만을 가져야 합니다. 연재되는 문서가 아닌 경우 카테고리 정보는 사용하지 않습니다. 작성 당시 연재 주제가 없던 문서가 후일 연재에 편입될 경우 카테고리 정보를 추가합니다.</p>
+
+<h3 id="태그">태그</h3>
+
+<p><strong>태그</strong>는 해당 문서에 대한 키워드의 목록으로써, GNB의 <strong>태그</strong> 항목에서의 문서 분류를 위한 값입니다. 이 정보는 여러 가지를 사용할 수 있습니다.</p>
+
+<p>문서에 대한 태그로 해당 문서에서 다루는 주요 논제나 개념을 작성할 수 있습니다. 한국어와 영어 모두 사용이 가능하나, 같은 대상에 대해 두 가지 이상의 표현이 사용되었을 경우, 추후 블로그 정비 시 이를 가장 범용적으로 사용되는 표현 한 가지로 일치시켜야 합니다.</p>
+
+<h1 id="markdown-문법의-의미와-규칙-용례">Markdown 문법의 의미와 규칙, 용례</h1>
+
+<p><strong>Markdown</strong>은 지킬 문서를 <strong>HTML</strong><sup>HyperText Markup Language</sup>로 파싱하기 위한 편집 문법입니다.</p>
+
+<p>이 문단에서는 각 마크다운 구문의 용도를 제한하여 일관성 있는 문서를 구성할 수 있도록 합니다.</p>
+
+<h2 id="제목-header">제목 (Header)</h2>
+<h3 id="제목-형식">제목 형식</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Header 1
+## Header 1.1
+### Header 1.1.1
+
+## Header 1.2
+
+# Header 2
+</code></pre></div></div>
+
+<p>이 구문은 문서 내 각 문단의 주제로써, 테마에 <strong>TOC</strong><sup>Table of Contents</sup> 기능이 있을 경우, 해당 영역의 앵커로 사용되는 부분입니다.</p>
+
+<p>문서의 제목과 마찬가지로, 각 문단의 주제를 가장 잘 드러내는 구절 또는 문장으로 작성하며, 가능한 한 문장 이내로 표현하고, 마지막 문장의 마침표 (<code class="highlighter-rouge">.</code>) 는 생략합니다.</p>
+
+<p>제목 계층에 따라 해시태그 (<code class="highlighter-rouge">#</code>) 개수를 조절하여 표현하며, 스타일 요소에 따라 계층에 맞지 않는 해시태그 개수를 사용하는 것은 금지됩니다.</p>
+
+<p>제목과 본문 사이에는 빈 줄을 하나 추가합니다. 단, 본문 없이 하위 제목이 연달아서 오는 경우에는 빈 줄을 추가하지 않습니다.</p>
+
+<p>특정 제목의 하위 제목에 대해 순서를 표시해야 할 경우 그 순서를 말머리로 하여 제목을 사용할 수 있습니다. 순서의 각 계층 구분은 온점 (<code class="highlighter-rouge">.</code>) 으로 합니다.</p>
+
+<h3 id="eg-순서-표시가-필요한-경우">e.g. 순서 표시가 필요한 경우</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># 어떤 제목
+
+...
+
+# 하위에 순서 표시가 필요한 제목
+## 1. 계층 1 제목
+### 1.1 계층 1의 하위 1 제목
+
+...
+
+### 1.2 계층 1의 하위 2 제목
+
+...
+
+## 2. 계층 2 제목
+
+...
+
+# 다른 제목
+</code></pre></div></div>
+
+<h2 id="강조-bold-and-emphasize">강조 (Bold and Emphasize)</h2>
+
+<p><strong>강조</strong> 문법으로는 <strong>굵은 글씨</strong> (<code class="highlighter-rouge">**Bold**</code>) 만 사용하며, <em>이탤릭체</em> (<code class="highlighter-rouge">*Italic Type*</code>) 는 사용하지 않습니다.</p>
+
+<p>강조는 다음과 같은 상황에 사용합니다.</p>
+
+<ul>
+  <li>해당 문단의 핵심 키워드가 처음 사용되었을 경우</li>
+  <li>윗 첨자 (<code class="highlighter-rouge">&lt;sup&gt;Superscript&lt;/sup&gt;</code>) 로 해설되는 약어의 표현</li>
+  <li>기타 해당 구문을 상기시켜야 할 경우</li>
+</ul>
+
+<p>글 작성 시 강조 문법이 남용되지 않도록 주의해야 합니다.</p>
+
+<h2 id="취소선-strikethrough">취소선 (Strikethrough)</h2>
+
+<p><strong>취소선</strong>은 문서의 주제와 관련이 적은 서술, 주로 농담에 사용됩니다. <del>넝담~ㅎ</del> 문법은 해당 구문의 앞뒤로 틸드 두 개 (<code class="highlighter-rouge">~~Strikethrough~~</code>) 를 사용합니다.</p>
+
+<p>삭제나 수정된 내용은 취소선을 사용하여 표시하지 않고 문서를 개정하여 그 내용을 변경합니다. 변경 이전의 내용에 대한 서술이 필요할 경우 개정 전후의 내용에 대한 문단을 추가하거나 [NOTE]를 사용합니다.</p>
+
+<p>즉, 취소선은 핵심 정보 전달과는 무관한 가벼운 상황에만 사용하는 것을 원칙으로 합니다. <del>그래야 나중에 취소선만 검색해서 부끄러운 드립들을 날려버릴 수 있거든</del></p>
+
+<h2 id="이미지-images">이미지 (Images)</h2>
+<h3 id="이미지-형식">이미지 형식</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>![이미지 설명](/assets/images/YYYY-MM-DD/NO-ORD.ext)[__
+이미지 캡션]
+</code></pre></div></div>
+
+<p>문서에 사용되는 이미지는 <code class="highlighter-rouge">/assets/images</code> 경로 이하에 저장합니다. 하위 경로의 구성은 아래의 규칙으로 합니다.</p>
+
+<ol>
+  <li><strong>YYYY-MM-DD/</strong>: 해당 문서의 작성일</li>
+  <li><strong>NO</strong>: 동일 작성일 내 문서 작성 순서</li>
+  <li><strong>ORD</strong>: 동일 문서 내 이미지 등장 순서 (2자리)</li>
+  <li><strong>.ext</strong>: 이미지 파일의 확장자</li>
+</ol>
+
+<p>참조 사이트와의 트래픽 문제를 방지하기 위하여 이미지는 가능한 사이트 내부에 두고 <code class="highlighter-rouge">relative_url</code> 옵션을 통해 상대경로 호출하여 사용합니다. 그러나 이미지에 대한 저작권 등이 우려되는 경우에는 해당 사이트의 주소를 사용하여 이미지를 삽입하거나, 링크 구문을 사용하여 이미지가 사용된 페이지를 직접 링크합니다.</p>
+
+<p>웹 접근성을 위한 이미지 설명은 생략할 수 없습니다.</p>
+
+<p>이미지에 대한 짧은 보충 설명이 필요할 경우, 강제 개행 (<code class="highlighter-rouge">  </code>: 띄어쓰기 두 칸) 하여 캡션과 같이 사용할 수 있습니다.</p>
+
+<p>문서 개정으로 이미지가 추가/삭제될 경우 등장 순서 (ORD) 규정을 완화하여 적용할 수 있습니다. 그러나 추후 블로그 정비 시 다시 규정에 맞추어 파일명과 인용 구문을 바꿔야 합니다.</p>
+
+<h2 id="링크-links">링크 (Links)</h2>
+<h3 id="링크-형식">링크 형식</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[링크할 구절](https://www.banyazavi.com/){: target="_blank"}
+</code></pre></div></div>
+
+<p>타 사이트의 페이지를 링크하는 경우에는 반드시 <strong>새 창에서 열기</strong> 옵션 (<code class="highlighter-rouge">{: target="_blank"}</code>) 을 추가해야 합니다. 블로그 내 문서 이동의 경우 이 옵션을 생략할 수 있습니다.</p>
+
+<p>블로그 내 문서 이동하는 경우 주소의 호스트를 제외한 경로만을 사용합니다. 단, 본 블로그를 타 사이트로 간주하는 경우에는 전체 주소를 사용할 수 있습니다. 그러나 이 경우에는 새 창에서 열기 옵션 또한 강제됩니다.</p>
+
+<h2 id="목록-lists">목록 (Lists)</h2>
+<h3 id="목록-형식">목록 형식</h3>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- Unordered List a
+- Unordered List b
+- ...
+
+1. Ordered List 1
+1. Ordered List 2
+1. ...
+</code></pre></div></div>
+
+<p><strong>순서가 없는 목록</strong>과 <strong>순서가 있는 목록</strong>을 명확하게 구분하여 사용합니다. 항목 간 선후관계가 있거나 중요도 등의 순위를 매길 수 있는 경우에는 순서가 있는 목록을 사용합니다. 그 외의 경우에는 순서가 없는 목록을 사용합니다.</p>
+
+<p>순서가 없는 목록의 문법은 하이픈 (<code class="highlighter-rouge">-</code>) 만을 사용합니다. 애스터리스크 (<code class="highlighter-rouge">*</code>) 는 강조 문법과의 혼동을 야기할 수 있어 사용하지 않습니다.</p>
+
+<p>순서가 있는 목록의 문법은 <code class="highlighter-rouge">1.</code>만을 사용합니다. <code class="highlighter-rouge">2.</code> 이후의 순서에도 변함 없이 <code class="highlighter-rouge">1.</code>을 사용합니다. 특정 순서부터 시작하거나 순서를 건너뛰는 목록은 지킬에서 지원하지 않습니다.</p>
+
+<p>목록은 각 항목이 동위성이 명확하게 인식되는 가능한 짧은 구절에 사용합니다. 항목의 내용이 길어질 경우 제목을 부여하여 하위 문단으로 분리합니다. 목록으로 사용하기에는 길고 제목을 부여하기에는 짧은 경우, 단순하게 문단만 나누어 사용 (각 항목 사이에 빈줄을 추가) 할 수 있습니다.</p>
+
+<blockquote>
+  <p><strong>[NOTE]</strong></p>
+
+  <p>목록의 사용을 다음과 같은 상황에 한정하면, 목록이 남용되는 것을 막으며 가독성을 향상시킬 수 있습니다.</p>
+
+  <ul>
+    <li>짧은 명사구로 된 항목의</li>
+    <li><strong>키워드</strong>: 설명 형식의 항목</li>
+  </ul>
+</blockquote>
+
+<h2 id="코드-블록-code-blocks">코드 블록 (Code Blocks)</h2>
+
+<p><strong>코드 블록</strong>은 문서에 사용되는 코드나 시스템 명령과 같은, 마크다운 문법이나 사이트 디자인에 영향 받지 않는 내용을 작성해야 할 때 사용합니다.</p>
+
+<p>인라인 코드 블록은 백틱 한 개 사이에 작성하고 (<code class="highlighter-rouge">｀Inline Code Block｀</code>), 여러 줄의 코드 블록은 백틱 세 개 (<code class="highlighter-rouge">｀｀｀</code>) 사이의 공간에 작성합니다.</p>
+
+<p>코드 블록은 제목에는 사용하지 않습니다. 코드 블록과 강조가 동시에 적용되는 상황에서는 코드 블록만 사용합니다.</p>
+
+<blockquote>
+  <p><strong>[NOTE]</strong></p>
+
+  <p>강조와 코드 블록의 사용이 혼동되는 경우, <strong>해당 구문을 그대로 복사하여 붙여넣기 할 수 있는지</strong>를 고려하여 구분할 수 있습니다.</p>
+
+  <p>e.g.</p>
+  <ul>
+    <li><strong>현재 디렉토리의 경로</strong>라는 표현은 복사/붙여넣기 할 필요가 없습니다.</li>
+    <li><strong>pwd</strong> 명령어는 복사하여 리눅스 명령줄에 붙여넣을 수 있습니다.</li>
+  </ul>
+</blockquote>
+
+<h2 id="수평선-horizontal-rules">수평선 (Horizontal Rules)</h2>
+
+<p><strong>수평선</strong>은 문서 내 얇은 가로줄로 표현되는 부분으로, <code class="highlighter-rouge">---</code> 구문을 사용하여 표현합니다.</p>
+
+<p>문서 본문과 머릿글, 꼬릿글 문단을 구분하는 용도로만 사용하여, 본문 내에서는 삽입하지 않습니다.</p>
+
+<h2 id="블록-인용-blockquotes">블록 인용 (Blockquotes)</h2>
+
+<p><strong>블록 인용</strong>은 다른 출처에서의 내용을 변형 없이 그대로 인용할 경우에 사용합니다.</p>
+
+<p>인용 블록 마지막에 출처 및 (가능하다면) 링크를 추가하는 것을 권장합니다.</p>
+
+<p>블록 인용되는 내용은 원문의 형식을 유지하기 위해 강제 개행 (<code class="highlighter-rouge">  </code>: 띄어쓰기 두 칸) 하는 것을 허용합니다.</p>
+
+<h3 id="블록-인용-사용례">블록 인용 사용례</h3>
+
+<blockquote>
+  <p>친구여, 나는 너의 하트를 빼앗으려 온 것이 아니다…<br />
+- 줄리어스 시저, 3막, 2장</p>
+
+  <p>- Windows 9x의 <strong>하트 게임 도움말 &gt; 한마디…</strong>에서 인용</p>
+</blockquote>
+
+<p>블록 인용 구문은 다음 두 가지의 추가 사용법을 허용합니다.</p>
+
+<ul>
+  <li>문서 목록에 노출되기 위한, 문서 최상단의 요약 구절</li>
+  <li><strong>[NOTE]</strong>: 문서의 내용에 대한 추가 설명</li>
+</ul>
+
+<h3 id="최상단-요약-구절-사용례">최상단 요약 구절 사용례</h3>
+
+<blockquote>
+  <p>이 부분은 문서 제목과 함께 노출되는 부분으로, 문서 내용에 대해 짧고 재미있게 요약한 내용을 담습니다. 한 문장일 필요는 없으나, 한 줄로 적어야 합니다.</p>
+</blockquote>
+
+<h3 id="추가-설명-사용례">추가 설명 사용례</h3>
+
+<blockquote>
+  <p><strong>[NOTE]</strong></p>
+
+  <p>이 부분에는 본문에서 언급하기에는 논점을 벗어나지만, 언급하게 되면 읽는 이의 이해를 돕는 내용이 들어가 있습니다.</p>
+
+  <p>문서 개정에 대한 정보를 담을 때도 유용합니다.</p>
+</blockquote>
+
+<h2 id="기타-markdown-외-문법-요소">기타 Markdown 외 문법 요소</h2>
+<h3 id="윗-첨자-superscripts">윗 첨자 (Superscripts)</h3>
+
+<p>윗 첨자는 HTML의 윗 첨자 태그 (<code class="highlighter-rouge">**SUP**&lt;sup&gt;SUPerscript&lt;/sup&gt;</code>) 를 사용합니다.</p>
+
+<p><strong>윗 첨자</strong>는 약어의 해설을 위해서만 사용하며, 해설받는 약어는 강조 구문으로 작성합니다. 문서 내에 약어가 최초 해설된 이후로는 사용하지 않습니다.</p>
+
+<h3 id="강제-개행">강제 개행</h3>
+
+<p>강제 개행 (<code class="highlighter-rouge">  </code>: 띄어쓰기 두 칸) 은 가능하면 사용하지 않습니다. 강제 개행이 사용된 부분은 문단을 나누거나 이전 문장의 다음에 이어서 작성하여야 합니다.</p>
+
+<p>그러나 다음 상황에 한하여 강제 개행을 허용합니다.</p>
+
+<ul>
+  <li>이미지 캡션으로 사용하는 경우</li>
+  <li>블록 인용에서 원문이 강제 개행되었을 경우</li>
+  <li>목록을 사용할 수 없는 상황에서 항목을 나열해야 하는 경우</li>
+</ul>
+
+<h1 id="표준-문서-규격-및-작성-정책">표준 문서 규격 및 작성 정책</h1>
+
+<p>이 문단에서는 블로그에 사용되는 표준 문서 규격과 문서 작성 시 적용되는 정책에 대해 다룹니다.</p>
+
+<h2 id="표준-문서-규격">표준 문서 규격</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+title: title
+key: post-YYYY-MM-DD-NO
+categories:
+  - category
+tags:
+  - tag 1
+  - tag 2
+---
+
+&gt; Post summary
+
+&lt;!--more--&gt;
+
+Post abstract
+
+---
+
+# Content header 1
+
+Content body
+
+---
+
+# Postscript header (Optional)
+
+Postscript
+</code></pre></div></div>
+
+<h2 id="작성-정책">작성 정책</h2>
+
+<p>문서 작성의 일관성을 유지하기 위한 표현 정책입니다.</p>
+
+<h3 id="경어체의-사용">경어체의 사용</h3>
+
+<p>문서 작성에 기본적으로 경어체를 사용합니다. 단, 다음과 같은 경우에는 평어체 및 기타 문체를 허용합니다.</p>
+
+<ul>
+  <li>개조식으로 서술되는 목록의 항목</li>
+  <li>이미지 캡션</li>
+  <li>인용 구절</li>
+  <li>취소선으로 처리되는 내용</li>
+  <li>기타 문서 구성 상 경어체 사용이 어색한 경우</li>
+</ul>
+
+<h3 id="원어-표현의-사용">원어 표현의 사용</h3>
+
+<p>원어 용어의 표현은 최초 등장시에만 원어로 표현하고, 이후에는 해당 용어의 가장 범용적인 국문 표현을 사용합니다.</p>
+
+<p>단, 다음의 경우에는 2회 이상 등장 시에도 원어 표현을 사용합니다.</p>
+
+<ul>
+  <li>제목 구문</li>
+  <li>코드 블록</li>
+  <li>발음 표기가 불가능한 약어의 경우 (e.g. 에프티피 (x), FTP (o) / cf. 바이오스 (o), BIOS (x))</li>
+  <li>발음 표기가 가능하지만 범용적인 국문 표현이 없거나, 국문 표현의 혼동이 예상되는 경우 (e.g. S.M.A.R.T. (o), 스마트 (x))</li>
+</ul>
+
+<p>반대로 다음의 경우에는 최초 등장시부터 국문 표현을 사용할 수 있습니다.</p>
+
+<ul>
+  <li>외래어이거나, 외래어에 준하는 용어 인식이 있는 경우 (e.g. 링크, 사이트, 스타일 등)</li>
+  <li>용어가 원어 + 국문의 조합으로 구성되어 있는 경우 (e.g. 문서 메타데이터 정보)</li>
+  <li>문서 작성에 참조한 출처에서 해당 용어를 국문으로 표현하고 있는 경우</li>
+</ul>
+
+<h3 id="소괄호-">소괄호 ()</h3>
+
+<p>소괄호 (<code class="highlighter-rouge">()</code>) 를 사용하는 경우, 앞뒤에 쉼표나 마침표 등의 기호가 있는 경우를 제외하면 각 소괄호 앞뒤를 띄어 씁니다. 단, 인용된 내용과 코드 블록에서는 예외를 허용합니다.</p>
+
+<hr />
+
+<h1 id="끝으로">끝으로…</h1>
+
+<p>이 문서는 블로그 문서 작정 지침을 준수하여 작성되었습니다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+        
+      </footer>
+
+      
+
+      
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Banyazavi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,813 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Docker와 Portainer 설치 - 반야자비의 웹로그 저장소</title>
+<meta name="description" content="  이 시리즈를 위한 가장 기본적인 도구 두 개를 먼저 설치해야 합니다.">
+
+
+  <meta name="author" content="반야자비">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="반야자비의 웹로그 저장소">
+<meta property="og:title" content="Docker와 Portainer 설치">
+<meta property="og:url" content="http://0.0.0.0:4000/2020-02-23/Docker%EC%99%80-Portainer-%EC%84%A4%EC%B9%98">
+
+
+  <meta property="og:description" content="  이 시리즈를 위한 가장 기본적인 도구 두 개를 먼저 설치해야 합니다.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-02-23T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/2020-02-23/Docker%EC%99%80-Portainer-%EC%84%A4%EC%B9%98">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Banyazavi",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="b7a6aab44db08c8b2a0f6481b3d71ae43203d2c5">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="반야자비의 웹로그 저장소 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          반야자비의 웹로그 저장소
+          <span class="site-subtitle">알게 된 것, 알아가고 있는 것 그리고 알리고 싶은 것을 기록합니다.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.jpg" alt="반야자비" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">반야자비</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I come not, friends, to steal away your hearts…<br />
+- Julius Caesar, Act III, scene ii<br />
+<br />
+친구여, 나는 너의 하트를 빼앗으려 온 것이 아니다…<br />
+- 줄리어스 시저, 3막, 2장</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:banyazavi.choi@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://www.banyazavi.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/2020-02-20/Docker-Cookbook"><span class="nav__sub-title">Docker Cookbook</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2020-02-23/Docker%EC%99%80-Portainer-%EC%84%A4%EC%B9%98" class="">- Docker와 Portainer 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2020-03-01/Nginx-Proxy-Manager-%EC%84%A4%EC%B9%98" class="">- Nginx Proxy Manager 설치</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Docker와 Portainer 설치">
+    <meta itemprop="description" content="  이 시리즈를 위한 가장 기본적인 도구 두 개를 먼저 설치해야 합니다.">
+    <meta itemprop="datePublished" content="February 23, 2020">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Docker와 Portainer 설치
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <blockquote>
+  <p>이 시리즈를 위한 가장 기본적인 도구 두 개를 먼저 설치해야 합니다.</p>
+</blockquote>
+
+<!--more-->
+
+<hr />
+
+<h1 id="docker와-portainer">Docker와 Portainer</h1>
+
+<p>굉장히 여러번 말씀드리는 것 같지만, <strong>Docker</strong>는 컨테이너 기반의 리눅스 가상화 도구입니다. 그러나 우리는 홈서버에 서비스를 편리하게 설치하기 위한 일종의 플랫폼으로 생각하자고 했죠.</p>
+
+<p>그리고 <strong>Portainer</strong>는 도커를 웹으로 편하게 관리하기 위한 도구입니다. SSH에 접속하여 코드를 칠 필요 없이, 포테이너 웹페이지에서 마우스 클릭으로 운영할 수 있다는 것이죠.</p>
+
+<p>그래서 이 두개를 이 시리즈의 핵심 기반으로 두고, 이 도구들을 설치하는 것을 첫 번째 목표로 하였습니다.</p>
+
+<h1 id="docker-설치">Docker 설치</h1>
+
+<p>도커는 대부분의 리눅스 시스템에 설치할 수 있습니다. <strong>Ubuntu</strong>나 <strong>Debian</strong>, <strong>CentOS</strong> 등은 각자의 패키지 관리 툴을 이용한 설치 방법도 제공하고 있구요. 바이너리를 직접 다운받아 설치할 수도 있습니다. <strong>시놀로지</strong>는 터미널에 접속할 필요 없이 웹 패널의 <strong>패키지 센터</strong>에서 설치할 수 있습니다. 각자 편한 방법으로 설치하면 됩니다.</p>
+
+<p>따라서 아래의 설치 명령어는 <strong>우분투를 기준으로 작성</strong>했어요. 다른 배포판의 설치 스크립트는 여기에서 확인할 수 있습니다. <a href="https://docs.docker.com/install" target="_blank">Docker 공식 Install 문서</a> (<strong>Docker Engine &gt; Linux &gt; 배포판 선택</strong>하여 볼 수 있어요.)</p>
+
+<p>도커가 아무리 사용자 환경에 상관 없이 설치를 제공한다고는 해도, 정말 모든 곳에 동일하게 설치되는 것은 아니에요. 컴퓨터에는 아키텍처라는 것이 있는데, 기본적으로 이게 다르면 설치 환경이 달라질 수 밖에 없어요.</p>
+
+<h2 id="오래된-docker-제거">오래된 Docker 제거</h2>
+
+<p>이미 도커가 설치되어 있는 경우에, 오래된 도커 버전을 제거합니다. 도커가 설치되어 있지 않은 경우에는 실행이 무시되므로 일단 실행시키면 됩니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get remove docker docker-engine docker.io containerd runc
+</code></pre></div></div>
+
+<h2 id="패키지-업데이트">패키지 업데이트</h2>
+
+<p>일단 패키지 업데이트를 한번 해 줍니다. 가능하면 최신 버전을 깔아야 하니까요.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get update
+</code></pre></div></div>
+
+<h2 id="관련-패키지-설치">관련 패키지 설치</h2>
+
+<p>도커 저장소 설정을 위해 <strong>HTTPS</strong> 사용을 할 수 있게 하는 패키지들을 설치합니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+</code></pre></div></div>
+
+<h2 id="docker-gpg-key-추가">Docker GPG Key 추가</h2>
+
+<p>도커 패키지의 인증을 위한 GPG Key를 추가해줍니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+</code></pre></div></div>
+
+<h2 id="docker-저장소-추가">Docker 저장소 추가</h2>
+
+<p>이건 아키텍처별로 다른데요, 아래 명령어의 <code class="highlighter-rouge">[arch=amd64]</code> 부분에 자신의 홈서버 아키텍처를 넣어주면 됩니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo add-apt-repository \
+   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+   $(lsb_release -cs) \
+   stable"
+</code></pre></div></div>
+
+<p>배포판별로 지원되는 아키텍처가 다르므로 공식 문서 페이지에서 확인해보는 것이 좋겠네요. 일반적으로는 아래와 같은 아키텍처 선택이 가능합니다.</p>
+
+<ul>
+  <li>[arch=amd64]</li>
+  <li>[arch=armhf]</li>
+  <li>[arch=arm64]</li>
+</ul>
+
+<h2 id="그리고-다시-패키지-업데이트">그리고 다시 패키지 업데이트</h2>
+
+<p>원래는 저장소 추가하면서 패키지 업데이트를 한번 해 줄텐데, 혹시 모르니 한번 더 해 줍시다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get update
+</code></pre></div></div>
+
+<h2 id="docker-패키지-설치">Docker 패키지 설치</h2>
+
+<p>이제 아래 명령어만 입력하면 도커의 설치가 완료됩니다!</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+</code></pre></div></div>
+
+<h2 id="설치-확인">설치 확인</h2>
+
+<p>제대로 설치되었는지 확인해 봅시다. 일단 버전부터 확인해 볼까요?</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$sudo docker --version
+
+Docker version 19.03.6, build 369ce74
+</code></pre></div></div>
+
+<p>작성일 기준으로 <strong>19.03.6</strong> 버전이 최신인 것 같네요.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo docker ps -a
+
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+</code></pre></div></div>
+
+<p>생성되어 있는 모든 컨테이너를 조회하는 명령입니다. 아무 것도 만들지 않았으니 당연히 없겠죠. 설치 오류 등으로 서비스가 제대로 실행되어 있지 않다면 <code class="highlighter-rouge">Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</code> 이런 메시지가 나올 거에요.</p>
+
+<p>이렇게 도커 설치는 완료되었습니다. 이제 포테이너를 설치해 봅시다.</p>
+
+<h1 id="portainer-설치">Portainer 설치</h1>
+
+<p>포테이너는 도커 서비스입니다. 도커 관련된 서비스라는 것도 맞는데, 이 서비스 자체도 도커 컨테이너로 실행 시키거든요! 그래서 명령어가 굉장히 간단한 편에 속하죠.</p>
+
+<p><a href="https://www.portainer.io/installation" target="_blank">공식 설치 문서</a>에서도 단 두줄로 안내하고 있습니다. 따라해 봅시다.</p>
+
+<h2 id="portainer-데이터-볼륨-설정">Portainer 데이터 볼륨 설정</h2>
+
+<p>포테이너 데이터를 담아둘 볼륨을 설정합니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$sudo docker volume create portainer_data
+</code></pre></div></div>
+
+<h2 id="portainer-컨테이너-생성">Portainer 컨테이너 생성</h2>
+
+<p>그리고 아래 명령어를 입력하여 포테이너 이미지를 다운받고 실행합니다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ sudo docker run -d \
+    -p 8000:8000 \
+    -p 9000:9000 \
+    --name=portainer \
+    --restart=always \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v portainer_data:/data \
+    portainer/portainer
+</code></pre></div></div>
+
+<h1 id="portainer-초기-설정">Portainer 초기 설정</h1>
+
+<p>설치가 완료되었다면 <strong>http://홈서버_IP:9000</strong>과 같이, 홈서버의 9000번 포트로 접속할 수 있습니다.</p>
+
+<p><img src="/assets/images/2020-02-23/2020-02-23-01-01.png" alt="Portainer 초기 설정" /></p>
+
+<p>최초 접속 시 관리자 계정을 설정하는 화면이 나옵니다. 원하는 이름과 비밀번호를 설정해 주세요.</p>
+
+<p><img src="/assets/images/2020-02-23/2020-02-23-01-02.png" alt="Portainer 관리 환경 설정" /></p>
+
+<p>도커 관리 환경 설정 화면입니다. 우리는 포테이너가 설치된 서버에서 도커를 같이 실행시킬 것이므로, <strong>Local</strong>이에요.</p>
+
+<p><img src="/assets/images/2020-02-23/2020-02-23-01-03.png" alt="Portainer 홈" /></p>
+
+<p>그럼 이제 홈 화면이 보입니다. 여기에 보이는 <strong>local</strong>이 우리 도커의 현재 상황이에요. 자세한 설정을 위해 카드를 눌러봅시다.</p>
+
+<p><img src="/assets/images/2020-02-23/2020-02-23-01-04.png" alt="Portainer Docker 상태 요약" /></p>
+
+<p>좀 더 자세한 상태를 볼 수 있어요. 컨테이너가 하나 실행되고 있죠? 그건 포테이너입니다.</p>
+
+<p>앞으로 가이드에 주로 쓰일 메뉴는 <strong>Stacks</strong>입니다. 눌러서 들어가봅시다.</p>
+
+<p><img src="/assets/images/2020-02-23/2020-02-23-01-05.png" alt="Portainer Stack 목록" /></p>
+
+<p>스택 관리 화면입니다. 스택은 포테이너에서 정의하는 컨테이너 묶음인데요. 저번 글에서 잠깐 언급했지만, <strong>Docker Compose</strong> 구성들을 의미한다고 보면 됩니다. 현재는 아무것도 구성하지 않았으니 목록이 비어 있어요.</p>
+
+<p>앞으로의 글은 이 화면에서 <strong>Add Stack</strong>을 누른 다음,</p>
+
+<p><img src="/assets/images/2020-02-23/2020-02-23-01-06.png" alt="Portainer Stack 생성" /></p>
+
+<p>여기의 <strong>Web editor</strong> 아래의 공간에 들어갈 내용을 안내할 겁니다.</p>
+
+<hr />
+
+<h1 id="그리고-남은-이야기">그리고 남은 이야기</h1>
+
+<p>도커를 원활하게 사용하려면 몇 가지 리눅스 명령어는 알고 있어야 해요. 아래 대표적인 명령들입니다.</p>
+
+<ul>
+  <li><code class="highlighter-rouge">ls</code>: <strong>List Segments</strong>. 현재 폴더의 내용을 보는 명령입니다.</li>
+  <li><code class="highlighter-rouge">cd [path]</code>: <strong>Change Directory</strong>. 폴더를 이동하는 명령입니다.</li>
+  <li><code class="highlighter-rouge">pwd</code>: <strong>Print Working Directory</strong>. 현재 폴더의 절대 경로를 출력하는 명령입니다. 나중에 볼륨 맵핑할때 유용하게 사용하게 됩니다.</li>
+  <li><code class="highlighter-rouge">mkdir -p [path]</code>: <strong>MaKe DIRectory</strong>. 폴더를 생성하는 명령입니다. <code class="highlighter-rouge">-p</code> 옵션을 넣으면 해당 폴더를 만들기 위해 필요한 상위폴더까지 자동으로 만들게 돼요.</li>
+</ul>
+
+<p>이 정도만 알고 있으면, 나머지는 포테이너에서 거의 다 할 수 있을 거에요.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#docker" class="page__taxonomy-item" rel="tag">Docker</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#portainer" class="page__taxonomy-item" rel="tag">Portainer</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#docker-cookbook" class="page__taxonomy-item" rel="tag">Docker Cookbook</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2020-02-23T00:00:00+09:00">February 23, 2020</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Docker%EC%99%80+Portainer+%EC%84%A4%EC%B9%98%20http%3A%2F%2F0.0.0.0%3A4000%2F2020-02-23%2FDocker%25EC%2599%2580-Portainer-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2F2020-02-23%2FDocker%25EC%2599%2580-Portainer-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2F2020-02-23%2FDocker%25EC%2599%2580-Portainer-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2020-02-20/Docker-Cookbook" class="pagination--pager" title="Docker Cookbook
+">이전</a>
+    
+    
+      <a href="/2020-03-01/Nginx-Proxy-Manager-%EC%84%A4%EC%B9%98" class="pagination--pager" title="Nginx Proxy Manager 설치
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-03-01/Nginx-Proxy-Manager-%EC%84%A4%EC%B9%98" rel="permalink">Nginx Proxy Manager 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  대부분의 서비스를 웹 페이지를 통해 접속할 거에요. 그러면 HTTPS 설정 서비스부터 설치하는 것이 좋겠죠?
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-20/Docker-Cookbook" rel="permalink">Docker Cookbook
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  컴퓨터 업계에서 “Cookbook”이란 어떤 것을 쉽게 설정하거나 구현할 수 있게 하는 코드 묶음을 의미합니다. 우리는 이 쿡북을 통해서 도커 서비스를 쉽게 설치해 보려고 해요.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" rel="permalink">Docker 서비스 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  도커를 사용하게 되면 OMV 플러그인에 한정되지 않는 수많은 서비스를 설치할 수 있습니다. 그리고 요즘은 도커로 배포되는 서비스도 많아졌어요.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9" rel="permalink">Let’s Encrypt SSL/TLS 인증서 적용
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  웹 브라우저를 통해 나스에 접속했을 때, ‘주의 요함’ 이라는 메시지가 뜨면 조금 그렇겠죠?
+
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Banyazavi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://0.0.0.0:4000/2020-02-23/Docker%EC%99%80-Portainer-%EC%84%A4%EC%B9%98";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2020-02-23/Docker와 Portainer 설치"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://banyazavis-weblog-repository.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

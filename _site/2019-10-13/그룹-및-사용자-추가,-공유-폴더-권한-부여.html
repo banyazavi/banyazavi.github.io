@@ -1,0 +1,788 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>그룹 및 사용자 추가, 공유 폴더 권한 부여 - 반야자비의 웹로그 저장소</title>
+<meta name="description" content="  좋은 것은 같이 봐야죠. 그러려면 사용자를 만들어야 합니다. 하지만 나만 보고 싶은 것도 있잖아요? 그래서 그룹도 만들어야 해요.">
+
+
+  <meta name="author" content="반야자비">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="반야자비의 웹로그 저장소">
+<meta property="og:title" content="그룹 및 사용자 추가, 공유 폴더 권한 부여">
+<meta property="og:url" content="http://0.0.0.0:4000/2019-10-13/%EA%B7%B8%EB%A3%B9-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%B6%94%EA%B0%80,-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC">
+
+
+  <meta property="og:description" content="  좋은 것은 같이 봐야죠. 그러려면 사용자를 만들어야 합니다. 하지만 나만 보고 싶은 것도 있잖아요? 그래서 그룹도 만들어야 해요.">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-10-13T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/2019-10-13/%EA%B7%B8%EB%A3%B9-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%B6%94%EA%B0%80,-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Banyazavi",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="b7a6aab44db08c8b2a0f6481b3d71ae43203d2c5">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="반야자비의 웹로그 저장소 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          반야자비의 웹로그 저장소
+          <span class="site-subtitle">알게 된 것, 알아가고 있는 것 그리고 알리고 싶은 것을 기록합니다.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.jpg" alt="반야자비" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">반야자비</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I come not, friends, to steal away your hearts…<br />
+- Julius Caesar, Act III, scene ii<br />
+<br />
+친구여, 나는 너의 하트를 빼앗으려 온 것이 아니다…<br />
+- 줄리어스 시저, 3막, 2장</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:banyazavi.choi@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://www.banyazavi.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/2019-10-06/OMV4-%EC%9E%90%EC%9E%91-NAS-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0"><span class="nav__sub-title">OMV4 NAS</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-09/%EB%94%94%EC%8A%A4%ED%81%AC-%EB%A7%88%EC%9A%B4%ED%8A%B8-%EB%B0%8F-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EC%84%A4%EC%A0%95" class="">- 디스크 마운트 및 공유 폴더 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-13/%EA%B7%B8%EB%A3%B9-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%B6%94%EA%B0%80,-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC" class="">- 그룹 및 사용자 추가, 공유 폴더 권한 부여</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-26/SMB-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%84%A4%EC%A0%95" class="">- SMB 네트워크 드라이브 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-27/FTP-%EC%84%A4%EC%A0%95" class="">- FTP 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-10/DuckDNS-DDNS-%EC%84%A4%EC%B9%98" class="">- DuckDNS DDNS 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-24/Transmission-BitTorrent-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%A4%EC%B9%98" class="">- Transmission BitTorrent 클라이언트 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-01/Nginx-%EC%97%AD%EB%B0%A9%ED%96%A5-%ED%94%84%EB%A1%9D%EC%8B%9C-%EC%84%A4%EC%A0%95" class="">- Nginx 역방향 프록시 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9" class="">- Let’s Encrypt SSL/TLS 인증서 적용</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" class="">- Docker 서비스 설치</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="그룹 및 사용자 추가, 공유 폴더 권한 부여">
+    <meta itemprop="description" content="  좋은 것은 같이 봐야죠. 그러려면 사용자를 만들어야 합니다. 하지만 나만 보고 싶은 것도 있잖아요? 그래서 그룹도 만들어야 해요.">
+    <meta itemprop="datePublished" content="October 13, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">그룹 및 사용자 추가, 공유 폴더 권한 부여
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <blockquote>
+  <p>좋은 것은 같이 봐야죠. 그러려면 사용자를 만들어야 합니다. 하지만 나만 보고 싶은 것도 있잖아요? 그래서 그룹도 만들어야 해요.</p>
+</blockquote>
+
+<!--more-->
+
+<p>나스를 혼자 쓸 생각이라면 중요하지 않지만, 다른 사람도 사용하게 하고 싶다면 사용자 관리가 중요합니다. 리눅스는 원래 여러 사람이 사용할 수 있게 설계 되었기에 이 부분에 대해서는 잘 준비가 되어 있어요.</p>
+
+<hr />
+
+<h1 id="사용자-그룹-계획-세우기">사용자 그룹 계획 세우기</h1>
+
+<p>권한을 사용자에게도 줄 수 있지만, 그렇게 관리했다가는 사용자가 조금만 늘어도 헷갈리기 시작할 거에요. 그래서 보통은 사용자들을 <strong>그룹</strong>에 소속시키고, 여기에 권한을 부여하여 사용하게 됩니다.</p>
+
+<p>우리도 그렇게 해 봅시다. 저는  이렇게 세 개의 그룹을 만들었어요.</p>
+
+<ul>
+  <li>관리자 그룹 (Administrators). 모든 폴더에 대한 읽기/쓰기 권한을 가집니다.</li>
+  <li>사용자 그룹 (Members). 모든 폴더에 대한 읽기와, <strong>Public</strong> 폴더라는 곳에서는 쓰기도 가능합니다.</li>
+  <li>제한된 사용자 그룹 (Guests). <strong>Public</strong> 폴더에만 읽기 권한이 있습니다.</li>
+</ul>
+
+<p>이렇게 만들어 보도록 할게요.</p>
+
+<h1 id="그룹-추가">그룹 추가</h1>
+
+<p><strong>접근 권한 관리 &gt; 그룹</strong> 페이지에서 그룹을 추가할 수 있어요.</p>
+
+<p><img src="/assets/images/2019-10-13/2019-10-13-01-01.png" alt="관리자 그룹 추가" /></p>
+
+<p>이런 식으로 그룹을 추가합니다. 구성원은 나중에 사용자 페이지에서 추가할 생각이니 신경쓰지 않아도 됩니다. <del>어차피 아직 사용자를 안 만들었</del></p>
+
+<p>나머지 그룹 생성 화면도 스크린샷을 찍기는 했는데요. 스크롤 낭비 같아서 생략합니다. 아무튼, 계획한 그룹을 모두 만들게 되면 아래와 같이 됩니다.</p>
+
+<p><img src="/assets/images/2019-10-13/2019-10-13-01-02.png" alt="접근 권한 관리 &gt; 그룹 목록" /></p>
+
+<p>그리고 이제 사용자를 추가하러 가는데, 잠깐만요!</p>
+
+<h1 id="사용자-추가">사용자 추가</h1>
+<h2 id="홈-디렉토리-생성-optional">홈 디렉토리 생성 (Optional)</h2>
+
+<p><img src="/assets/images/2019-10-13/2019-10-13-01-03.png" alt="접근 권한 관리 &gt; 사용자, 설정 탭" /></p>
+
+<p>저번에 하다 만 부분이 있었는데, 홈 디렉토리를 생성하는 부분입니다.</p>
+
+<p><strong>접근 권한 관리 &gt; 사용자</strong> 페이지의 <strong>설정</strong> 탭에 들어갑니다. 그리고 옵션 활성화를 하고, 홈 디렉토리 목적으로 만든 공유 폴더를 연결해 줍니다.</p>
+
+<h2 id="사용자-추가-1">사용자 추가</h2>
+
+<p>이제 사용자를 추가합니다. <strong>접근 권한 관리 &gt; 사용자</strong> 페이지에서 추가할 수 있어요.</p>
+
+<p>일단 각 그룹별로 한 명씩 만들어 볼게요.</p>
+
+<p><img src="/assets/images/2019-10-13/2019-10-13-01-04.png" alt="banyazavi 사용자 추가" /></p>
+
+<p>사실, 이름과 암호를 제외하면 필수로 입력하는 항목은 아닙니다.</p>
+
+<p>이제 그룹도 설정해 볼까요.</p>
+
+<p><img src="/assets/images/2019-10-13/2019-10-13-01-05.png" alt="사용자 그룹 할당" /></p>
+
+<p>관리자 목적으로 만든 사용자이므로 관리자 그룹을 선택해 줍니다. 이 화면에선 보이지 않지만, 사용자 생성 시 기본값으로 <strong>users</strong> 그룹이 체크되어 있는데요. 이를 그룹 권한 관리하면서 바꿔줄 수 있긴 하지만, OMV는 기본적으로 users 그룹으로 폴더나 파일을 생성하므로 굳이 체크를 해제할 필요는 없습니다.</p>
+
+<blockquote>
+  <p><strong>[NOTE]</strong></p>
+
+  <p>이 사용자를 통해 <code class="highlighter-rouge">ssh</code>를 사용하려고 한다면 <strong>일반</strong> 탭의 <strong>셸</strong> 부분도 신경 써주어야 합니다. 일반적으로 <code class="highlighter-rouge">/bin/bash</code>로 설정하면 크게 무리가 없어요.</p>
+</blockquote>
+
+<p><img src="/assets/images/2019-10-13/2019-10-13-01-06.png" alt="ssh, sudo 그룹 할당" /></p>
+
+<p>그리고 <strong>ssh</strong> 그룹 (<code class="highlighter-rouge">ssh</code> 접속 허용) 과 <strong>sudo</strong> 그룹 (<code class="highlighter-rouge">sudo</code> 명령을 통한 <code class="highlighter-rouge">root</code> 권한 실행 허용) 도 추가시켜 주어야 합니다.</p>
+
+<p>home 디렉토리를 만들지 않았으면 <strong>Tab</strong> 키를 통한 명령어 자동 완성이 지원되지 않으니, home 폴더도 만드는 것이 좋습니다.</p>
+
+<h1 id="공유-폴더의-접근-권한-관리">공유 폴더의 접근 권한 관리</h1>
+
+<p>저번 포스트에서 만든 공유 폴더들에 정책에 맞는 접근 권한을 줍니다.</p>
+
+<p><strong>권한</strong>과 <strong>접근 제어 목록</strong> 두 가지가 있는데,</p>
+
+<ul>
+  <li><strong>권한</strong>: 해당 공유 폴더가 서비스의 최상위 폴더로 노출되는 것에 대한 설정</li>
+  <li><strong>접근 제어 목록</strong>: 실제 파일/폴더에 적용된 접근 권한</li>
+</ul>
+
+<p>이라고 설명할 수 있습니다.</p>
+
+<p>직관적으로 이해가 가지 않을 수 있는데요, 나중에 권한을 주지 않은 채로 접근 제어 목록에 권한을 준 뒤 FTP 등의 서비스로 접속해보면 무슨 의미인지 알 수 있습니다. 이 글의 구성에서는 양쪽을 다르게 설정할 이유가 없으므로, 두 설정의 내용을 똑같이 맞추어 주면 됩니다.</p>
+
+<p>아무튼, <strong>Contents</strong> 폴더에 권한을 부여합니다. 아래의 폴더는 <strong>관리자 그룹</strong>에게는 읽기/쓰기를, <strong>사용자 그룹</strong>에는 읽기만을, 그리고 <strong>제한된 사용자 그룹 (게스트)</strong>의 접근은 거부하는 구성이네요.</p>
+
+<p><img src="/assets/images/2019-10-13/2019-10-13-01-07.png" alt="Contents 공유 폴더 권한 설정" /></p>
+
+<p>접근 제어 목록도 동일한 정책으로 수정합니다.</p>
+
+<p><img src="/assets/images/2019-10-13/2019-10-13-01-08.png" alt="Contents 공유 폴더 접근 제어 목록 설정" /></p>
+
+<p>하단의 <strong>재귀적으로 - 파일과 디렉터리에 권한을 적용</strong> 옵션을 켜 주게 되면, 해당 폴더의 하위 파일과 폴더에도 같은 설정이 적용됩니다. <del>어색한 번역</del></p>
+
+<p>자, 이제 폴더와 사용자 구성도 모두 끝났습니다. 이제 서비스를 설정하여 나스에 접속할 준비는 끝났습니다. 다음 글에서 서비스를 하나 설정해 보도록 합시다.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#nas" class="page__taxonomy-item" rel="tag">NAS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#openmediavault" class="page__taxonomy-item" rel="tag">openmediavault</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#omv4-%EC%9E%90%EC%9E%91-nas-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0" class="page__taxonomy-item" rel="tag">OMV4 자작 NAS 구축하기</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-10-13T00:00:00+09:00">October 13, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=%EA%B7%B8%EB%A3%B9+%EB%B0%8F+%EC%82%AC%EC%9A%A9%EC%9E%90+%EC%B6%94%EA%B0%80%2C+%EA%B3%B5%EC%9C%A0+%ED%8F%B4%EB%8D%94+%EA%B6%8C%ED%95%9C+%EB%B6%80%EC%97%AC%20http%3A%2F%2F0.0.0.0%3A4000%2F2019-10-13%2F%25EA%25B7%25B8%25EB%25A3%25B9-%25EB%25B0%258F-%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590-%25EC%25B6%2594%25EA%25B0%2580%2C-%25EA%25B3%25B5%25EC%259C%25A0-%25ED%258F%25B4%25EB%258D%2594-%25EA%25B6%258C%25ED%2595%259C-%25EB%25B6%2580%25EC%2597%25AC" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2F2019-10-13%2F%25EA%25B7%25B8%25EB%25A3%25B9-%25EB%25B0%258F-%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590-%25EC%25B6%2594%25EA%25B0%2580%2C-%25EA%25B3%25B5%25EC%259C%25A0-%25ED%258F%25B4%25EB%258D%2594-%25EA%25B6%258C%25ED%2595%259C-%25EB%25B6%2580%25EC%2597%25AC" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2F2019-10-13%2F%25EA%25B7%25B8%25EB%25A3%25B9-%25EB%25B0%258F-%25EC%2582%25AC%25EC%259A%25A9%25EC%259E%2590-%25EC%25B6%2594%25EA%25B0%2580%2C-%25EA%25B3%25B5%25EC%259C%25A0-%25ED%258F%25B4%25EB%258D%2594-%25EA%25B6%258C%25ED%2595%259C-%25EB%25B6%2580%25EC%2597%25AC" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2019-10-09/%EB%94%94%EC%8A%A4%ED%81%AC-%EB%A7%88%EC%9A%B4%ED%8A%B8-%EB%B0%8F-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EC%84%A4%EC%A0%95" class="pagination--pager" title="디스크 마운트 및 공유 폴더 설정
+">이전</a>
+    
+    
+      <a href="/2019-10-26/SMB-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%84%A4%EC%A0%95" class="pagination--pager" title="SMB 네트워크 드라이브 설정
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-03-01/Nginx-Proxy-Manager-%EC%84%A4%EC%B9%98" rel="permalink">Nginx Proxy Manager 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  대부분의 서비스를 웹 페이지를 통해 접속할 거에요. 그러면 HTTPS 설정 서비스부터 설치하는 것이 좋겠죠?
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-23/Docker%EC%99%80-Portainer-%EC%84%A4%EC%B9%98" rel="permalink">Docker와 Portainer 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  이 시리즈를 위한 가장 기본적인 도구 두 개를 먼저 설치해야 합니다.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-20/Docker-Cookbook" rel="permalink">Docker Cookbook
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  컴퓨터 업계에서 “Cookbook”이란 어떤 것을 쉽게 설정하거나 구현할 수 있게 하는 코드 묶음을 의미합니다. 우리는 이 쿡북을 통해서 도커 서비스를 쉽게 설치해 보려고 해요.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" rel="permalink">Docker 서비스 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  도커를 사용하게 되면 OMV 플러그인에 한정되지 않는 수많은 서비스를 설치할 수 있습니다. 그리고 요즘은 도커로 배포되는 서비스도 많아졌어요.
+
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Banyazavi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://0.0.0.0:4000/2019-10-13/%EA%B7%B8%EB%A3%B9-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%B6%94%EA%B0%80,-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2019-10-13/그룹 및 사용자 추가, 공유 폴더 권한 부여"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://banyazavis-weblog-repository.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

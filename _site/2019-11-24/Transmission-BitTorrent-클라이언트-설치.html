@@ -1,0 +1,802 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.17.2 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>Transmission BitTorrent 클라이언트 설치 - 반야자비의 웹로그 저장소</title>
+<meta name="description" content="  공유자가 얼마 없는 토렌트도 세월아 네월아 기다리다 보면 다 받을 수 있는 법입니다. 물론 컴퓨터가 세월아 네월아 켜져 있어야 하죠. 그런데 우리는 나스가 있잖아요?">
+
+
+  <meta name="author" content="반야자비">
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:site_name" content="반야자비의 웹로그 저장소">
+<meta property="og:title" content="Transmission BitTorrent 클라이언트 설치">
+<meta property="og:url" content="http://0.0.0.0:4000/2019-11-24/Transmission-BitTorrent-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%A4%EC%B9%98">
+
+
+  <meta property="og:description" content="  공유자가 얼마 없는 토렌트도 세월아 네월아 기다리다 보면 다 받을 수 있는 법입니다. 물론 컴퓨터가 세월아 네월아 켜져 있어야 하죠. 그런데 우리는 나스가 있잖아요?">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2019-11-24T00:00:00+09:00">
+
+
+
+
+
+  
+
+  
+
+
+<link rel="canonical" href="http://0.0.0.0:4000/2019-11-24/Transmission-BitTorrent-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%A4%EC%B9%98">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Banyazavi",
+      "url": "http://0.0.0.0:4000/"
+    
+  }
+</script>
+
+
+
+
+
+
+  <meta name="naver-site-verification" content="b7a6aab44db08c8b2a0f6481b3d71ae43203d2c5">
+
+<!-- end _includes/seo.html -->
+
+
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="반야자비의 웹로그 저장소 Feed">
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single wide">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          반야자비의 웹로그 저장소
+          <span class="site-subtitle">알게 된 것, 알아가고 있는 것 그리고 알리고 싶은 것을 기록합니다.</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/categories/" >Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/" >Tags</a>
+            </li></ul>
+        
+        <button class="search__toggle" type="button">
+          <span class="visually-hidden">Toggle search</span>
+          <svg class="icon" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.99 16">
+            <path d="M15.5,13.12L13.19,10.8a1.69,1.69,0,0,0-1.28-.55l-0.06-.06A6.5,6.5,0,0,0,5.77,0,6.5,6.5,0,0,0,2.46,11.59a6.47,6.47,0,0,0,7.74.26l0.05,0.05a1.65,1.65,0,0,0,.5,1.24l2.38,2.38A1.68,1.68,0,0,0,15.5,13.12ZM6.4,2A4.41,4.41,0,1,1,2,6.4,4.43,4.43,0,0,1,6.4,2Z" transform="translate(-.01)"></path>
+          </svg>
+        </button>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">토글 메뉴</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+
+      
+        <img src="/assets/images/avatar.jpg" alt="반야자비" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">반야자비</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>I come not, friends, to steal away your hearts…<br />
+- Julius Caesar, Act III, scene ii<br />
+<br />
+친구여, 나는 너의 하트를 빼앗으려 온 것이 아니다…<br />
+- 줄리어스 시저, 3막, 2장</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">팔로우</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="mailto:banyazavi.choi@gmail.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-envelope-square" aria-hidden="true"></i> Email</a></li>
+          
+        
+          
+            <li><a href="https://www.banyazavi.com" rel="nofollow noopener noreferrer"><i class="fas fa-fw fa-link" aria-hidden="true"></i> Website</a></li>
+          
+        
+          
+        
+          
+        
+          
+            <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+          
+        
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+    
+      
+      
+      
+      
+
+<nav class="nav__list">
+  
+  <input id="ac-toc" name="accordion-toc" type="checkbox" />
+  <label for="ac-toc">토글 메뉴</label>
+  <ul class="nav__items">
+    
+      <li>
+        
+          
+          
+
+          <a href="/2019-10-06/OMV4-%EC%9E%90%EC%9E%91-NAS-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0"><span class="nav__sub-title">OMV4 NAS</span></a>
+        
+
+        
+        <ul>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-09/%EB%94%94%EC%8A%A4%ED%81%AC-%EB%A7%88%EC%9A%B4%ED%8A%B8-%EB%B0%8F-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EC%84%A4%EC%A0%95" class="">- 디스크 마운트 및 공유 폴더 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-13/%EA%B7%B8%EB%A3%B9-%EB%B0%8F-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%B6%94%EA%B0%80,-%EA%B3%B5%EC%9C%A0-%ED%8F%B4%EB%8D%94-%EA%B6%8C%ED%95%9C-%EB%B6%80%EC%97%AC" class="">- 그룹 및 사용자 추가, 공유 폴더 권한 부여</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-26/SMB-%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%81%AC-%EB%93%9C%EB%9D%BC%EC%9D%B4%EB%B8%8C-%EC%84%A4%EC%A0%95" class="">- SMB 네트워크 드라이브 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-10-27/FTP-%EC%84%A4%EC%A0%95" class="">- FTP 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-10/DuckDNS-DDNS-%EC%84%A4%EC%B9%98" class="">- DuckDNS DDNS 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-11-24/Transmission-BitTorrent-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%A4%EC%B9%98" class="">- Transmission BitTorrent 클라이언트 설치</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-01/Nginx-%EC%97%AD%EB%B0%A9%ED%96%A5-%ED%94%84%EB%A1%9D%EC%8B%9C-%EC%84%A4%EC%A0%95" class="">- Nginx 역방향 프록시 설정</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-14/Let's-Encrypt-SSL-TLS-%EC%9D%B8%EC%A6%9D%EC%84%9C-%EC%A0%81%EC%9A%A9" class="">- Let’s Encrypt SSL/TLS 인증서 적용</a></li>
+          
+            
+            
+
+            
+            
+
+            <li><a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" class="">- Docker 서비스 설치</a></li>
+          
+        </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+    
+    
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Transmission BitTorrent 클라이언트 설치">
+    <meta itemprop="description" content="  공유자가 얼마 없는 토렌트도 세월아 네월아 기다리다 보면 다 받을 수 있는 법입니다. 물론 컴퓨터가 세월아 네월아 켜져 있어야 하죠. 그런데 우리는 나스가 있잖아요?">
+    <meta itemprop="datePublished" content="November 24, 2019">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">Transmission BitTorrent 클라이언트 설치
+</h1>
+          
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <blockquote>
+  <p>공유자가 얼마 없는 토렌트도 세월아 네월아 기다리다 보면 다 받을 수 있는 법입니다. 물론 컴퓨터가 세월아 네월아 켜져 있어야 하죠. 그런데 우리는 나스가 있잖아요?</p>
+</blockquote>
+
+<!--more-->
+
+<p><strong>BitTorrent</strong>는 파일의 공유를 위한 P2P 프로토콜입니다. 파일을 다운받는 사용자를 동시에 다운받은 부분에 대한 업로더로 활용, 해당 파일에 대한 업로드 자원을 확장시켜 다운로드 속도를 확보하며 빠르게 파일을 확산시키는 방식이죠.</p>
+
+<p>비트토렌트는 고성능의 배포 서버를 확보하기 어려운 프로그램의 배포에 활용되는 경우가 종종 있습니다. 게임 클라이언트라거나, 오픈소스나 개인 제작자의 파일 배포 등에요. 네, 사실 가장 많이 쓰이는 분야는 방송 등 미디어 컨텐츠에 대한 공유일 거에요. <del>그걸 어떻게 하는지는 알아서 찾아봅시다.</del></p>
+
+<p>그래서 이 글에서는 <strong>Transmission</strong>이라고 하는 비트토렌트 클라이언트를 설치하여 토렌트를 통해 파일을 다운받거나 공유하는 방법을 안내합니다.</p>
+
+<hr />
+
+<h1 id="transmission-설치">Transmission 설치</h1>
+
+<p>일단 트랜스미션을 다운받습니다. OMV4까지는 이를 플러그인으로 지원하기 때문에 매우 쉽게 설치할 수 있어요.</p>
+
+<p>아래 그림과 같이 <strong>시스템 &gt; 플러그인</strong> 에서 transmission 패키지를 찾아 설치합니다.</p>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-01.png" alt="Transmission 설치" /></p>
+
+<h1 id="토렌트-관리-폴더-설정">토렌트 관리 폴더 설정</h1>
+
+<p>토렌트를 받기 위해서는 아래와 같이 세 개의 폴더를 만들어야 합니다.</p>
+
+<ul>
+  <li>complete (완료된 토렌트 파일을 보관할 폴더)</li>
+  <li>incomplete (다운로드 중인 토렌트 파일이 저장될 폴더)</li>
+  <li>watch (다운로드할 토렌트 시드를 저장할 폴더)</li>
+</ul>
+
+<p>이 중 <strong>incomplete</strong>, <strong>watch</strong> 폴더는 만들지 않아도 됩니다. incomplete 폴더를 만들지 않으면 complete 폴더에 같이 저장되게 되고, watch 폴더가 없으면 시드 파일을 복사하여 토렌트를 받는 방식을 사용할 수 없어요.</p>
+
+<p>저는 토렌트 전용 공유폴더를 생성하여 설치를 진행하기로 했습니다.</p>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-02.png" alt="torrent 공유 폴더 생성" /></p>
+
+<p>위와 같이 공유 폴더를 생성하고, FTP나 SMB, SSH 등으로 이 아래에 위에서 말한 3개의 폴더를 생성합니다.</p>
+
+<p>그리고 트랜스미션 프로그램이 이 폴더에 접근할 수 있도록 권한을 줍니다.</p>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-03.png" alt="debian-transmission 권한 부여" /></p>
+
+<h1 id="bittorrent-설정">BitTorrent 설정</h1>
+
+<p>플러그인을 설치하고 나면 <strong>서비스 &gt; BitTorrent</strong>라는 메뉴가 생긴 것이 보일 거에요. 해당 메뉴에 들어간 뒤, <strong>Files and Locations</strong> 탭부터 확인합니다.</p>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-04.png" alt="Files and Locations 설정" /></p>
+
+<p>아까 만든 폴더들을 위 그림과 같이 연결합니다. 그리고 <strong>RPC</strong> 탭으로 갑니다.</p>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-05.png" alt="RPC 설정" /></p>
+
+<p><strong>트랜스미션 RPC</strong>는 트랜스미션을 관리하는 웹 패널이에요. RPC를 활성화시킨 후 나스의 해당 포트로 접속하게 되면 <strong>µTorrent</strong>처럼 토렌트를 관리할 수 있습니다.</p>
+
+<p>그리고 이 설정은 <a href="https://play.google.com/store/apps/details?id=net.yupol.transmissionremote.app&amp;hl=ko" target="_blank"><strong>Transmission Remote</strong></a>과 같은 외부 관리 툴에서도 필요해요.</p>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-06.png" alt="Transmission 활성화" /></p>
+
+<p>그리고 트랜스미션을 활성화해주면 끝입니다.</p>
+
+<h1 id="transmission을-통해-토렌트-다운받기">Transmission을 통해 토렌트 다운받기</h1>
+
+<p>자, 이제 토렌트를 받아봅시다.</p>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-07.png" alt="Transmission RPC 접속" /></p>
+
+<p>웹 브라우저에 <strong>NAS주소:포트번호</strong>로 접속하여 트랜스미션 RPC에 접속하면 위와 같은 화면을 볼 수 있습니다. <strong>열기</strong> 아이콘을 눌러 토렌트 받기를 시작할 수 있어요.</p>
+
+<h2 id="첫-번째-방법-rpc에-시드-파일을-추가하기">첫 번째 방법, RPC에 시드 파일을 추가하기</h2>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-08.png" alt="RPC에 .torrent 시드 추가" /></p>
+
+<p>인터넷에서 받은 <code class="highlighter-rouge">.torrent</code> 시드 파일을 파일 선택 버튼을 통해 추가할 수 있습니다.</p>
+
+<h2 id="두-번째-방법-rpc에-마그넷-주소-붙여넣기">두 번째 방법, RPC에 마그넷 주소 붙여넣기</h2>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-09.png" alt="RPC에 magnet 링크 추가" /></p>
+
+<p>아니면 <code class="highlighter-rouge">magnet:</code> 으로 시작하는 링크를 붙여넣어 토렌트를 다운받을 수도 있구요.</p>
+
+<h2 id="세-번째-방법-watch-폴더에-시드-파일을-복사하기">세 번째 방법, Watch 폴더에 시드 파일을 복사하기</h2>
+
+<p>아까 만들어 둔 <strong>watch</strong> 폴더에 <code class="highlighter-rouge">.torrent</code> 파일을 복사하여 다운로드를 진행할 수도 있어요. 파일을 복사한 뒤 트랜스미션이 시드를 확인하면, 토렌트를 추가하고 파일을 <code class="highlighter-rouge">.added</code> 확장자로 바꿔놓습니다.</p>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-10.png" alt="Watch 폴더에 시드 복사" /></p>
+
+<p><strong>FTP</strong>를 통해 시드를 복사해 놓은 장면입니다. 복사 직후 토렌트가 파일을 인식하여 <code class="highlighter-rouge">.added</code> 파일로 바꿔놓았네요.</p>
+
+<p>아무튼 이렇게 파일을 추가하고 나면,</p>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-11.png" alt="RPC 토렌트 추가 후 화면" /></p>
+
+<p>이렇게 토렌트가 추가되어 다운로드 중인 것을 확인할 수 있습니다. 다운로드 중에는 <code class="highlighter-rouge">incomplete</code> 폴더에 <code class="highlighter-rouge">.part</code> 확장자로 파일이 받아지다가,</p>
+
+<p><img src="/assets/images/2019-11-24/2019-11-24-01-12.png" alt="다운받은 파일 확인" /></p>
+
+<p>다운이 완료되면 <code class="highlighter-rouge">complete</code> 폴더에 이렇게 받아져 있는 것을 볼 수 있어요.</p>
+
+<hr />
+
+<h1 id="그리고-남은-이야기">그리고 남은 이야기</h1>
+
+<p>이 시리즈의 시작 부분에서 언급한 내용이지만, OMV5에서는 플러그인이 삭제되어 트랜스미션을 위와 같이 설정할 수 없습니다.</p>
+
+<p>OMV가 커뮤니티에서 개발하는 솔루션이므로 도커와 같은 외부의 구축 방식을 사용하는 것이 플러그인 개발 부담이 적긴 하겠지만, 트랜스미션 정도는 핵심 기능으로 고려하고 플러그인을 개발하는 것이 좋았지 싶습니다. 아쉽네요.</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> 태그: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/tags/#bittorrent" class="page__taxonomy-item" rel="tag">BitTorrent</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#nas" class="page__taxonomy-item" rel="tag">NAS</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#openmediavault" class="page__taxonomy-item" rel="tag">openmediavault</a><span class="sep">, </span>
+    
+      
+      
+      <a href="/tags/#transmission" class="page__taxonomy-item" rel="tag">Transmission</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> 카테고리: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="/categories/#omv4-%EC%9E%90%EC%9E%91-nas-%EA%B5%AC%EC%B6%95%ED%95%98%EA%B8%B0" class="page__taxonomy-item" rel="tag">OMV4 자작 NAS 구축하기</a>
+    
+    </span>
+  </p>
+
+
+        
+          <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> 업데이트:</strong> <time datetime="2019-11-24T00:00:00+09:00">November 24, 2019</time></p>
+        
+      </footer>
+
+      <section class="page__share">
+  
+    <h4 class="page__share-title">공유하기</h4>
+  
+
+  <a href="https://twitter.com/intent/tweet?text=Transmission+BitTorrent+%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8+%EC%84%A4%EC%B9%98%20http%3A%2F%2F0.0.0.0%3A4000%2F2019-11-24%2FTransmission-BitTorrent-%25ED%2581%25B4%25EB%259D%25BC%25EC%259D%25B4%25EC%2596%25B8%25ED%258A%25B8-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--twitter" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Twitter"><i class="fab fa-fw fa-twitter" aria-hidden="true"></i><span> Twitter</span></a>
+
+  <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F0.0.0.0%3A4000%2F2019-11-24%2FTransmission-BitTorrent-%25ED%2581%25B4%25EB%259D%25BC%25EC%259D%25B4%25EC%2596%25B8%25ED%258A%25B8-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--facebook" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 Facebook"><i class="fab fa-fw fa-facebook" aria-hidden="true"></i><span> Facebook</span></a>
+
+  <a href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A%2F%2F0.0.0.0%3A4000%2F2019-11-24%2FTransmission-BitTorrent-%25ED%2581%25B4%25EB%259D%25BC%25EC%259D%25B4%25EC%2596%25B8%25ED%258A%25B8-%25EC%2584%25A4%25EC%25B9%2598" class="btn btn--linkedin" onclick="window.open(this.href, 'window', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" title="공유하기 LinkedIn"><i class="fab fa-fw fa-linkedin" aria-hidden="true"></i><span> LinkedIn</span></a>
+</section>
+
+
+      
+  <nav class="pagination">
+    
+      <a href="/2019-11-10/DuckDNS-DDNS-%EC%84%A4%EC%B9%98" class="pagination--pager" title="DuckDNS DDNS 설치
+">이전</a>
+    
+    
+      <a href="/2019-12-01/Nginx-%EC%97%AD%EB%B0%A9%ED%96%A5-%ED%94%84%EB%A1%9D%EC%8B%9C-%EC%84%A4%EC%A0%95" class="pagination--pager" title="Nginx 역방향 프록시 설정
+">다음</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      <h4 class="page__related-title">참고</h4>
+      <div class="grid__wrapper">
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-03-01/Nginx-Proxy-Manager-%EC%84%A4%EC%B9%98" rel="permalink">Nginx Proxy Manager 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  대부분의 서비스를 웹 페이지를 통해 접속할 거에요. 그러면 HTTPS 설정 서비스부터 설치하는 것이 좋겠죠?
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-23/Docker%EC%99%80-Portainer-%EC%84%A4%EC%B9%98" rel="permalink">Docker와 Portainer 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  이 시리즈를 위한 가장 기본적인 도구 두 개를 먼저 설치해야 합니다.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2020-02-20/Docker-Cookbook" rel="permalink">Docker Cookbook
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  컴퓨터 업계에서 “Cookbook”이란 어떤 것을 쉽게 설정하거나 구현할 수 있게 하는 코드 묶음을 의미합니다. 우리는 이 쿡북을 통해서 도커 서비스를 쉽게 설치해 보려고 해요.
+
+
+</p>
+  </article>
+</div>
+
+        
+          
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
+    
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="/2019-12-22/Docker-%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%84%A4%EC%B9%98" rel="permalink">Docker 서비스 설치
+</a>
+      
+    </h2>
+    
+    <p class="archive__item-excerpt" itemprop="description">
+  도커를 사용하게 되면 OMV 플러그인에 한정되지 않는 수많은 서비스를 설치할 수 있습니다. 그리고 요즘은 도커로 배포되는 서비스도 많아졌어요.
+
+
+</p>
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+  
+</div>
+
+    </div>
+
+    
+      <div class="search-content">
+        <div class="search-content__inner-wrap"><form class="search-content__form" onkeydown="return event.key != 'Enter';">
+    <label class="sr-only" for="search">
+      Enter your search term...
+    </label>
+    <input type="search" id="search" class="search-input" tabindex="-1" placeholder="검색어를 입력하세요..." />
+  </form>
+  <div id="results" class="results"></div></div>
+
+      </div>
+    
+
+    <div id="footer" class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>팔로우:</strong></li>
+    
+
+    
+      
+        
+      
+        
+      
+        
+          <li><a href="https://github.com/banyazavi" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+        
+      
+        
+      
+        
+      
+    
+
+    <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> 피드</a></li>
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2020 Banyazavi. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+  <script src="https://kit.fontawesome.com/4eee35f757.js"></script>
+
+
+
+
+<script src="/assets/js/lunr/lunr.min.js"></script>
+<script src="/assets/js/lunr/lunr-store.js"></script>
+<script src="/assets/js/lunr/lunr-en.js"></script>
+
+
+
+
+    
+  <script>
+    var disqus_config = function () {
+      this.page.url = "http://0.0.0.0:4000/2019-11-24/Transmission-BitTorrent-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%A4%EC%B9%98";  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = "/2019-11-24/Transmission BitTorrent 클라이언트 설치"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://banyazavis-weblog-repository.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+    })();
+  </script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+  
+
+
+
+
+
+  </body>
+</html>

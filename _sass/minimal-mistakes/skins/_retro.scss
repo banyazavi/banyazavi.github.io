@@ -1,0 +1,23 @@
+/* ==========================================================================
+   Retro skin
+   ========================================================================== */
+
+/* Colors */
+$background-color: #eee !default;
+$text-color: #522 !default;
+$muted-text-color: #a22 !default;
+$primary-color: #933 !default;
+$border-color: mix(#fff, #a22, 75%) !default;
+$footer-background-color: $primary-color !default;
+$link-color: #a22 !default;
+$masthead-link-color: $text-color !default;
+$masthead-link-color-hover: $text-color !default;
+$navicon-link-color-hover: mix(#fff, $text-color, 80%) !default;
+
+.page__footer {
+  color: #fff !important; // override
+}
+
+.page__footer-follow .social-icons .svg-inline--fa {
+  color: inherit;
+}

@@ -1,12 +1,143 @@
 # main links
 main:
-  - title: "Quick-Start Guide"
-    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+  - title: Ubuntu 24.04
+    url: /category/ubuntu_24_04_lts/
+  - title: OMV6 NAS
+    url: /category/omv6_nas/
+  - title: Docker NAS
+    url: /category/docker_nas/
+  - title: Categories
+    url: /categories/
+  - title: Tags
+    url: /tags/
+
+default:
+  - title: Series
+    children:
+    - title: "- 우분투 24.04 LTS 설정"
+      url: /category/ubuntu_24_04_lts/
+    - title: "- 우분투 데스크톱 설정"
+      url: /category/ubuntu_desktop/
+    - title: "- OMV6 on HC4"
+      url: /category/omv6_nas/
+    - title: "- Docker for a NAS"
+      url: /category/docker_nas/
+    - title: "- OMV4 자작 NAS 구축"
+      url: /category/omv4_nas/
+
+omv4_nas:
+  - title: OMV4 자작 NAS 구축
+    url: /category/omv4_nas/
+    children:
+      - title: "- OMV4 자작 NAS 구축"
+        url: /2019-10-06/OMV4-자작-NAS-구축
+      - title: "- 디스크 마운트 및 공유 폴더 설정"
+        url: /2019-10-09/디스크-마운트-및-공유-폴더-설정
+      - title: "- 그룹 및 사용자 추가, 공유 폴더 권한 부여"
+        url: /2019-10-13/그룹-및-사용자-추가,-공유-폴더-권한-부여
+      - title: "- SMB 네트워크 드라이브 설정"
+        url: /2019-10-26/SMB-네트워크-드라이브-설정
+      - title: "- FTP 설정"
+        url: /2019-10-27/FTP-설정
+      - title: "- DuckDNS DDNS 설치"
+        url: /2019-11-10/DuckDNS-DDNS-설치
+      - title: "- Transmission BitTorrent 클라이언트 설치"
+        url: /2019-11-24/Transmission-BitTorrent-클라이언트-설치
+      - title: "- Nginx 역방향 프록시 설정"
+        url: /2019-12-01/Nginx-역방향-프록시-설정
+      - title: "- Let’s Encrypt SSL/TLS 인증서 적용"
+        url: /2019-12-14/Let's-Encrypt-SSL-TLS-인증서-적용
+      - title: "- Docker 서비스 설치"
+        url: /2019-12-22/Docker-서비스-설치
+
+docker_nas:
+  - title: Docker for a NAS
+    url: /category/docker_nas/
+    children:
+      - title: "- Docker for a NAS"
+        url: /2020-02-20/Docker-for-a-NAS
+      - title: "- Docker와 Portainer"
+        url: /2020-02-23/Docker와-Portainer
+      - title: "- Nginx Proxy Manager"
+        url: /2020-03-01/Nginx-Proxy-Manager
+      - title: "- Transmission BitTorrent 클라이언트"
+        url: /2020-03-07/Transmission-BitTorrent-클라이언트
+      - title: "- Nextcloud 설치형 클라우드"
+        url: /2020-03-14/Nextcloud-설치형-클라우드
+      - title: "- Jekyll Github Pages"
+        url: /2020-04-05/Jekyll-Github-Pages
+      - title: "- WordPress 설치형 블로그"
+        url: /2020-04-11/Wordpress-설치형-블로그
+      - title: "- Jellyfin 개인 미디어 서버"
+        url: /2020-04-19/Jellyfin-개인-미디어-서버
+      - title: "- PHP 개발 환경"
+        url: /2020-05-03/PHP-개발-환경
+      - title: "- filebrowser.xyz 파일 탐색기"
+        url: /2020-06-22/filebrowser.xyz-파일-탐색기
+      - title: "- Lychee 사진 관리 서비스"
+        url: /2020-07-05/Lychee-사진-관리-서비스
+      - title: "- Heimdall 애플리케이션 대시보드"
+        url: /2021-01-16/Heimdall-애플리케이션-대시보드
+      - title: "- Watchtower 도커 이미지 업데이트 자동화"
+        url: /2021-01-30/Watchtower-도커-이미지-업데이트-자동화
+      - title: "- Syncthing 파일 동기화"
+        url: /2022-02-19/Syncthing-파일-동기화
+
+omv6_nas:
+  - title: OMV6 on HC4
+    url: /category/omv6_nas/
+    children:
+      - title: "- ODROID-HC4에 OMV6 NAS 구축하기"
+        url: /2021-12-04/ODROID-HC4에-OMV6-NAS-구축하기
+      - title: "- ODROID-HC4에 Debian 설치"
+        url: /2021-12-05/ODROID-HC4에-Debian-설치
+      - title: "- openmediavault 6 설치"
+        url: /2021-12-11/openmediavault-6-설치
+      - title: "- 디스크 마운트 및 공유 폴더 생성"
+        url: /2021-12-12/디스크-마운트-및-공유-폴더-생성
+      - title: "- ODROID-HC4 OLED 활용"
+        url: /2021-12-18/ODROID-HC4-OLED-활용
+      - title: "- 그룹 및 사용자 추가, 공유 폴더 권한 부여"
+        url: /2021-12-26/그룹-및-사용자-추가,-공유-폴더-권한-부여
+      - title: "- SMB 네트워크 드라이브"
+        url: /2022-01-02/SMB-네트워크-드라이브
+      - title: "- MiniDLNA 홈 미디어 서버"
+        url: /2022-01-09/MiniDLNA-홈-미디어-서버
+      - title: "- Apt Tool 패키지 관리자 GUI"
+        url: /2022-01-16/Apt-Tool-패키지-관리자-GUI
+      - title: "- DuckDNS DDNS"
+        url: /2022-01-23/DuckDNS-DDNS
+      - title: "- FTPS"
+        url: /2022-02-05/FTPS
+      - title: "- Docker와 Portainer"
+        url: /2022-02-12/Docker와-Portainer
+
+ubuntu_desktop:
+  - title: 우분투 데스크톱 설정
+    url: /category/ubuntu_desktop/
+    children:
+      - title: "- 우분투 데스크톱 설정"
+        url: /2022-05-28/우분투-데스크톱-설정
+      - title: "- Zorin OS Lite"
+        url: /2022-05-29/Zorin-OS-Lite
+      - title: "- Nimf 한글 입력기 프레임워크"
+        url: /2022-06-04/Nimf-한글-입력기-프레임워크
+      - title: "- xrdp 원격 데스크톱"
+        url: /2022-06-11/xrdp-원격-데스크톱
+      - title: "- Barrier KVM 소프트웨어"
+        url: /2022-06-25/Barrier-KVM-소프트웨어
+
+ubuntu_24_04_lts:
+  - title: Ubuntu 24.04 LTS
+    url: /category/ubuntu_24_04_lts/
+    children:
+      - title: "- 우분투 24.04 LTS 설정"
+        url: /2024-04-25/우분투-24.04-LTS-설정
+      - title: "- Ubuntu MATE"
+        url: /2024-04-26/Ubuntu-MATE
+      - title: "- Nimf 한글 입력기 프레임워크"
+        url: /2024-04-27/Nimf-한글-입력기-프레임워크
+      - title: "- xrdp 원격 데스크톱"
+        url: /2024-04-28/xrdp-원격-데스크톱
+      - title: "- Barrier KVM 소프트웨어"
+        url: /2024-04-29/Barrier-KVM-소프트웨어

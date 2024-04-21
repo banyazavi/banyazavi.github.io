@@ -13,6 +13,10 @@ tags:
   - Zorin OS Lite
 ---
 
+> **[NOTE]**  
+> Zorin OS **Lite**는 16을 마지막으로 더 이상 출시하지 않습니다...  
+> [**Ubuntu MATE**](/2024-04-26/Ubuntu-MATE)를 설치하는 것은 어떨까요?
+
 리눅스에는 정말 많은 운영 체제가 있습니다. [**DistroWatch의 리눅스 배포판 계통도**](https://distrowatch.com/dwres.php?resource=family-tree){: target="_blank"}만 봐도, 6MB나 되는 이미지에 온갖 배포판이 빼곡하게 정리되어 있죠. 그래서 무엇을 사용하는지도 고민이 되고는 하죠.
 
 저도 꽤 많은 배포판을 써 봤는데요. 매우 주관적으로 아래 배포판은 꽤 쓸만했습니다. (모두 우분투 기반이에요)

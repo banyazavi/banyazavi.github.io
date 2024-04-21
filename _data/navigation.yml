@@ -1,7 +1,7 @@
 # main links
 main:
-  - title: Ubuntu Desktop
-    url: /category/ubuntu_desktop/
+  - title: Ubuntu 24.04
+    url: /category/ubuntu_24_04_lts/
   - title: OMV6 NAS
     url: /category/omv6_nas/
   - title: Docker NAS
@@ -14,6 +14,8 @@ main:
 default:
   - title: Series
     children:
+    - title: "- 우분투 24.04 LTS 설정"
+      url: /category/ubuntu_24_04_lts/
     - title: "- 우분투 데스크톱 설정"
       url: /category/ubuntu_desktop/
     - title: "- OMV6 on HC4"
@@ -124,3 +126,18 @@ ubuntu_desktop:
         url: /2022-06-11/xrdp-원격-데스크톱
       - title: "- Barrier KVM 소프트웨어"
         url: /2022-06-25/Barrier-KVM-소프트웨어
+
+ubuntu_24_04_lts:
+  - title: Ubuntu 24.04 LTS
+    url: /category/ubuntu_24_04_lts/
+    children:
+      - title: "- 우분투 24.04 LTS 설정"
+        url: /2024-04-25/우분투-24.04-LTS-설정
+      - title: "- Ubuntu MATE"
+        url: /2024-04-26/Ubuntu-MATE
+      - title: "- Nimf 한글 입력기 프레임워크"
+        url: /2024-04-27/Nimf-한글-입력기-프레임워크
+      - title: "- xrdp 원격 데스크톱"
+        url: /2024-04-28/xrdp-원격-데스크톱
+      - title: "- Barrier KVM 소프트웨어"
+        url: /2024-04-29/Barrier-KVM-소프트웨어
